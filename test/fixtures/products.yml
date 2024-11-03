@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Carrot
+  category: 0
+
+two:
+  name: Cinnamon
+  category: 0
+
+protein:
+  name: Tofu
+  category: 1
+
+carbohydrate:
+  name: Potato
+  category: 2

@@ -58,6 +58,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # Makes tests easy on the fingers and the eyes [https://github.com/thoughtbot/shoulda]
+  gem "shoulda", "~> 4.0"
 end
 
+# Authentication [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.9"

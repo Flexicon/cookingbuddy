@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_02_020751) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_03_122608) do
+  create_table "ingredients", force: :cascade do |t|
+    t.integer "amount", null: false
+    t.string "unit"
+    t.integer "recipe_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_ingredients_on_product_id"
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_products_on_category"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.integer "category", null: false
+    t.integer "protein_id"
+    t.integer "carbohydrate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carbohydrate_id"], name: "index_recipes_on_carbohydrate_id"
+    t.index ["category"], name: "index_recipes_on_category"
+    t.index ["protein_id"], name: "index_recipes_on_protein_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -27,4 +58,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_02_020751) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "ingredients", "products"
+  add_foreign_key "ingredients", "recipes"
+  add_foreign_key "recipes", "products", column: "carbohydrate_id"
+  add_foreign_key "recipes", "products", column: "protein_id"
 end
