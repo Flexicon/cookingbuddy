@@ -17,9 +17,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5">
-      <%= yield %>
+  <body class="bg-gray-50 dark:bg-gray-900 min-h-lvh">
+    <main class="container mx-auto pt-5 px-5">
+      <div class="p-6">
+        <%= render "shared/navbar" %>
+        <%= render "shared/flashes" %>
+        <%= yield %>
+      </div>
+
+      <footer class="p-6 text-center text-xs text-gray-500">Powered by ☕️</footer>
     </main>
   </body>
 </html>

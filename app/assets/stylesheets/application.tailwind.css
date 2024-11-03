@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  @apply bg-gray-50 dark:bg-gray-900 min-h-lvh;
+}
+
+@layer components {
+  .alert-alert {
+    @apply alert-warning;
+  }
+
+  .btn-alert {
+    @apply btn-warning;
+  }
+
+  /* Forms */
+  .field_with_errors input {
+    @apply input-error;
+  }
+}

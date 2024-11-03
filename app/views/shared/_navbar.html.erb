@@ -1,0 +1,19 @@
+<nav class="mb-10 flex justify-between">
+  <div class="text-3xl font-bold">
+    <%= link_to root_path, class: 'text-primary-700 dark:text-primary-400 -skew-y-12 block' do %>
+      CookingBuddy
+    <% end %>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <% if user_signed_in? %>
+      <%= button_to destroy_user_session_path, class: 'btn btn-sm', method: :delete do %>
+        <span>Logout</span>
+      <% end %>
+    <% elsif !['sessions', 'registrations', 'passwords'].include?(controller_name) %>
+      <%= link_to new_user_session_path, class: 'btn btn-sm' do %>
+        <span>Sign in</span>
+      <% end %>
+    <% end %>
+  </div>
+</nav>
