@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import SelfRemoverController from "./self_remover_controller"
-application.register("self-remover", SelfRemoverController)
+import SelfYeeterController from "./self_yeeter_controller"
+application.register("self-yeeter", SelfYeeterController)
