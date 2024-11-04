@@ -1,4 +1,46 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+<%# TODO: refactor from flex to grid %>
+<div class="flex flex-col lg:flex-row-reverse lg:justify-between gap-4">
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title mb-6">Recipes Based on Time of Day</h2>
+
+      <% (1..5).each do |i| %>
+        <div class="flex w-52 flex-col gap-4 mb-4">
+          <div class="flex items-center gap-4">
+            <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+            <div class="flex flex-col gap-4">
+              <div class="skeleton h-4 w-20"></div>
+              <div class="skeleton h-4 w-28"></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <!-- Recipes Table -->
+  <div class="card bg-base-100 shadow-xl overflow-x-auto flex-1">
+    <%# TODO: add filters %>
+    <div class="card-body">
+      <h2 class="card-title">Recipes</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Updated At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (1..10).each do |i| %>
+            <tr class="hover cursor-pointer">
+              <td>Recipe <%= i %></td>
+              <td><%= Recipe.categories.keys[i % Recipe.categories.size].capitalize %></td>
+              <td><%= (1 + i).day.ago.strftime("%b %d, %Y") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
