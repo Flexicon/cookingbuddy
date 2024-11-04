@@ -1,6 +1,6 @@
 <div class="flash-messages mb-4 space-y-2" data-turbo-temporary>
   <% flash.each do |type, msg| %>
-    <div role="alert" class="alert alert-<%= type %>" data-controller="self-remover">
+    <div role="alert" class="alert alert-<%= type %> shadow" data-controller="self-yeeter">
       <% case type %>
       <% when "notice" %>
         <svg
@@ -54,7 +54,7 @@
 
       <span><%= msg %></span>
 
-      <button class="btn btn-sm btn-<%= type %>" data-action="self-remover#yeet">
+      <button class="btn btn-sm btn-<%= type %>" data-action="click->self-yeeter#yeet">
         <%= t("flash.alert.ack_button") %>
       </button>
     </div>
