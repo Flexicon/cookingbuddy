@@ -22,6 +22,14 @@
   <div class="card bg-base-100 shadow-xl overflow-x-auto flex-1">
     <%# TODO: add filters %>
     <div class="card-body">
+      <div class="flex flex-col gap-6 mb-1">
+        <div class="skeleton h-6 w-32 mt-1 mb-4"></div>
+        <% (1..10).each do |i| %>
+          <div class="skeleton h-6 w-full"></div>
+        <% end %>
+      </div>
+      <!--
+      <%# TODO: load the recipes via turbo frame %>
       <h2 class="card-title">Recipes</h2>
       <table class="table">
         <thead>
@@ -41,6 +49,7 @@
           <% end %>
         </tbody>
       </table>
+      -->
     </div>
   </div>
 </div>
