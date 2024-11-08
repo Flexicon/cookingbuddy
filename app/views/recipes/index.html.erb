@@ -1,0 +1,22 @@
+<%= turbo_frame_tag :recipes do %>
+  <h2 class="card-title">Recipes</h2>
+  <%# TODO: add filters %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Updated At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr class="hover">
+          <td><%= link_to recipe.name, recipe_path(recipe), class: "link", data: { turbo_frame: "_top" } %></td>
+          <td><%= recipe.category.capitalize %></td>
+          <td><%= recipe.updated_at.strftime("%b %d, %Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

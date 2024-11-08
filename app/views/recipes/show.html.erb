@@ -1,0 +1,20 @@
+<div class="card bg-base-100 shadow-xl">
+  <figure>
+    <%# TODO: replace placeholder image with actual recipe image %>
+    <img
+      class="h-48 bg-base-200 w-full object-cover"
+      src="https://picsum.photos/seed/<%= @recipe.name %>/900/192"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title"><%= @recipe.name %></h2>
+    <p class="text-sm mb-4"><%= @recipe.category.capitalize %></p>
+
+    <h3 class="font-semibold">Ingredients</h3>
+    <ul class="list-disc list-inside pl-2">
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient.amount %> <%= ingredient.unit %> <%= ingredient.product.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
