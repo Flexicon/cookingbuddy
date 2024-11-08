@@ -7,3 +7,29 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Setup Users
+User.create!(email: "foo@bar.com", password: "testing", password_confirmation: "testing")
+
+# Setup Products
+carrot = Product.create!(name: "Carrot", category: :general)
+cinnamon = Product.create!(name: "Cinnamon", category: :general)
+tofu = Product.create!(name: "Tofu", category: :protein)
+potato = Product.create!(name: "Potato", category: :carbohydrate)
+flour = Product.create!(name: "Flour", category: :carbohydrate)
+onion = Product.create!(name: "Onion", category: :general)
+
+# Setup Recipes
+carrot_cake = Recipe.create!(name: "Carrot Cake", category: :dessert, carbohydrate: flour)
+cinnamon_roll = Recipe.create!(name: "Cinnamon Roll", category: :lunch, carbohydrate: flour)
+tofu_scramble = Recipe.create!(name: "Tofu Scramble", category: :dinner, protein: tofu)
+potato_salad = Recipe.create!(name: "Potato Salad", category: :supper, carbohydrate: potato)
+
+# Setup Ingredients
+Ingredient.create!(amount: 65, unit: "g", recipe: carrot_cake, product: carrot)
+Ingredient.create!(amount: 140, unit: "g", recipe: carrot_cake, product: flour)
+Ingredient.create!(amount: 2, unit: "tbsp", recipe: cinnamon_roll, product: cinnamon)
+Ingredient.create!(amount: 140, unit: "g", recipe: cinnamon_roll, product: flour)
+Ingredient.create!(amount: 100, unit: "g", recipe: tofu_scramble, product: tofu)
+Ingredient.create!(amount: 1, recipe: tofu_scramble, product: onion)
+Ingredient.create!(amount: 450, unit: "g", recipe: potato_salad, product: potato)
