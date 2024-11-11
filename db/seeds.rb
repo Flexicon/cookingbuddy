@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -22,6 +24,8 @@ onion = Product.create!(name: "Onion", category: :general)
 # Setup Recipes
 carrot_cake = Recipe.create!(name: "Carrot Cake", category: :dessert, carbohydrate: flour)
 cinnamon_roll = Recipe.create!(name: "Cinnamon Roll", category: :lunch, carbohydrate: flour)
+matar_tofu = Recipe.create!(name: "Matar Tofu", category: :lunch, protein: tofu)
+tortilla_pizza = Recipe.create!(name: "tortilla_pizza", category: :lunch, protein: tofu)
 tofu_scramble = Recipe.create!(name: "Tofu Scramble", category: :dinner, protein: tofu)
 potato_salad = Recipe.create!(name: "Potato Salad", category: :supper, carbohydrate: potato)
 
@@ -30,6 +34,9 @@ Ingredient.create!(amount: 65, unit: "g", recipe: carrot_cake, product: carrot)
 Ingredient.create!(amount: 140, unit: "g", recipe: carrot_cake, product: flour)
 Ingredient.create!(amount: 2, unit: "tbsp", recipe: cinnamon_roll, product: cinnamon)
 Ingredient.create!(amount: 140, unit: "g", recipe: cinnamon_roll, product: flour)
+Ingredient.create!(amount: 100, unit: "g", recipe: matar_tofu, product: tofu)
+Ingredient.create!(amount: 1, recipe: matar_tofu, product: onion)
+Ingredient.create!(amount: 100, unit: "g", recipe: tortilla_pizza, product: tofu)
 Ingredient.create!(amount: 100, unit: "g", recipe: tofu_scramble, product: tofu)
 Ingredient.create!(amount: 1, recipe: tofu_scramble, product: onion)
 Ingredient.create!(amount: 450, unit: "g", recipe: potato_salad, product: potato)

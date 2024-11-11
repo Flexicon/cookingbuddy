@@ -25,3 +25,6 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
     - 'vendor/bundle/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   has_many :ingredients, dependent: :destroy
   has_many :recipes_as_protein, class_name: "Recipe", inverse_of: "protein", dependent: :nullify
