@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -65,3 +67,5 @@ end
 
 # Authentication [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.9"
+
+gem "view_component", "~> 3.20"

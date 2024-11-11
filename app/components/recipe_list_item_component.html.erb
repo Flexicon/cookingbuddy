@@ -1,0 +1,10 @@
+<div class="flex items-center gap-4">
+  <%= link_to recipe_path(@recipe), data: { turbo_frame: "_top" } do %>
+    <%# TODO: replace placeholder image with actual recipe image %>
+    <img class="h-14 w-14 shrink-0 rounded-full bg-base-200" src="https://picsum.photos/seed/<%= @recipe.name %>/56/56" />
+  <% end %>
+  <div class="flex flex-col gap-1">
+    <%= link_to @recipe.name, recipe_path(@recipe), class: "link link-hover", data: { turbo_frame: "_top" } %>
+    <span class="text-sm text-base-content/70"><%= @recipe.category.capitalize %></span>
+  </div>
+</div>
