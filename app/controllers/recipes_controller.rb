@@ -10,6 +10,10 @@ class RecipesController < ApplicationController
   def show
   end
 
+  def by_category
+    @recipes = Recipe.where(category: params[:category])
+  end
+
   private
 
   def set_recipe
