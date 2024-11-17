@@ -1,0 +1,7 @@
+<div class="recipes-list">
+  <% @recipes.each do |recipe| %>
+    <div class="mb-4">
+      <%= render RecipeListItemComponent.new(recipe: recipe) %>
+    </div>
+  <% end %>
+</div>

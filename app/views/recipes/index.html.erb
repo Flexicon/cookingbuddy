@@ -1,22 +1,23 @@
-<%= turbo_frame_tag :recipes do %>
-  <h2 class="card-title">Recipes</h2>
-  <%# TODO: add filters %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Updated At</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipes.each do |recipe| %>
-        <tr class="hover">
-          <td><%= link_to recipe.name, recipe_path(recipe), class: "link", data: { turbo_frame: "_top" } %></td>
-          <td><%= recipe.category.capitalize %></td>
-          <td><%= recipe.updated_at.strftime("%b %d, %Y") %></td>
-        </tr>
+<%# TODO: refactor from flex to grid %>
+<div class="flex flex-col lg:flex-row-reverse lg:justify-between gap-4">
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title mb-6">Recipes Based on Time of Day</h2>
+
+      <%# TODO: this will need to be loaded via AJAX using Stimulus %>
+      <%= turbo_frame_tag :recipes_by_category, src: by_category_recipes_path(category: :lunch), refresh: "morph" do %>
+        <%= render RecipeListSkeletonComponent.new %>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
+
+    </div>
+  </div>
+  <!-- Recipes Table -->
+  <div class="card bg-base-100 shadow-xl overflow-x-auto flex-1">
+    <div class="card-body">
+      <h2 class="card-title mb-6">Recipes</h2>
+
+      <%#TODO: add filters %>
+      <%= render RecipeListComponent.new(recipes: @recipes) %>
+    </div>
+  </div>
+</div>

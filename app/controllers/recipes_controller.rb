@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_recipe, only: [:show]
 
   def index
