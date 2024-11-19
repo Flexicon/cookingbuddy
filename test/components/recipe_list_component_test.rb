@@ -3,10 +3,14 @@
 require "test_helper"
 
 class RecipeListComponentTest < ViewComponent::TestCase
-  def test_component_renders_something_useful
-    # assert_equal(
-    #   %(<span>Hello, components!</span>),
-    #   render_inline(RecipeListComponent.new(message: "Hello, components!")).css("span").to_html
-    # )
+  def setup
+    @recipes = [recipes(:one), recipes(:two)]
+  end
+
+  def test_component_renders
+    render_inline(RecipeListComponent.new(recipes: @recipes))
+
+    assert_text(@recipes.first.name)
+    assert_text(@recipes.second.name)
   end
 end
