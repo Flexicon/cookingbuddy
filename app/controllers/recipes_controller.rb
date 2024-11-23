@@ -13,6 +13,11 @@ class RecipesController < ApplicationController
 
   def by_category
     @recipes = Recipe.where(category: params[:category])
+
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.turbo_stream {}
+    end
   end
 
   private

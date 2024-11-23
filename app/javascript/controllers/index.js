@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import SelfYeeterController from "./self_yeeter_controller"
 application.register("self-yeeter", SelfYeeterController)
+
+import SuggestedRecipesController from "./suggested_recipes_controller"
+application.register("suggested-recipes", SuggestedRecipesController)
