@@ -12,7 +12,8 @@ class RecipesController < ApplicationController
   end
 
   def by_category
-    @recipes = Recipe.where(category: params[:category])
+    @category = params[:category]
+    @recipes = Recipe.where(category: @category)
 
     respond_to do |format|
       format.html { redirect_to root_url }

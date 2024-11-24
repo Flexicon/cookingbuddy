@@ -4,4 +4,9 @@
       <%= render RecipeListItemComponent.new(recipe: recipe) %>
     </div>
   <% end %>
+  <% if @recipes.empty? %>
+    <div class="text-center">
+      <p class="text-gray-500"><%= @blank_message %></p>
+    </div>
+  <% end %>
 </div>

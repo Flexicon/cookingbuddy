@@ -1,3 +1,6 @@
 <%= turbo_stream.replace :recipes_by_category do %>
-  <%= render RecipeListComponent.new(recipes: @recipes) %>
+  <%= render RecipeListComponent.new(
+    recipes: @recipes,
+    blank_message: "No recipes for #{@category} yet",
+  ) %>
 <% end %>
