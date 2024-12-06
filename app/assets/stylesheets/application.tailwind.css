@@ -19,4 +19,8 @@
   .field_with_errors input {
     @apply input-error;
   }
+
+  .field_with_errors select {
+    @apply select-error;
+  }
 }

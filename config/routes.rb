@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "recipes#index"
 
-  resources :recipes, only: [:index, :show] do
+  resources :recipes, only: %i[index show] do
     collection do
       get "by_category/:category", action: :by_category, as: :by_category
     end
   end
+
+  resources :products
+  resource :inventory, controller: :inventory
 end

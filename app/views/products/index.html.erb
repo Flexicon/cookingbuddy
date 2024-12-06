@@ -1,0 +1,55 @@
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title mb-6 flex justify-between">
+      <span>Products</span>
+      <%= link_to new_product_path, class: "btn btn-primary btn-outline btn-sm" do %>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-4 h-4"
+        ><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+        Add
+      <% end %>
+    </h2>
+
+    <div class="overflow-x-auto">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.name %></td>
+              <%#TODO: replace with product category component %>
+              <td><%= product.category %></td>
+              <td>
+                <div class="flex gap-1">
+                  <%= link_to "Show", product, class: "btn btn-ghost btn-xs" %>
+                  <%= link_to "Edit", edit_product_path(product), class: "btn btn-ghost btn-xs" %>
+                  <%= button_to "Destroy",
+                  product,
+                  class: "btn btn-ghost btn-xs",
+                  method: :delete,
+                  data: {
+                    turbo_confirm: "Are you sure?",
+                  } %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

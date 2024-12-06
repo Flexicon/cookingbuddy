@@ -1,0 +1,73 @@
+<%= form_with model: product, class: "w-full max-w-sm" do |form| %>
+  <div class="space-y-4 mb-6">
+    <% if product.errors.any? %>
+      <div class="alert alert-error">
+        <div class="flex-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-6 h-6"
+          >
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12" y2="16"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <label class="font-bold">Oops, couldn't save this product</label>
+          <ul>
+            <% product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Name</span>
+      </div>
+      <%= form.text_field :name,
+                      class: "input input-bordered w-full",
+                      placeholder: "Tomato",
+                      autofocus: true %>
+    </label>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Category</span>
+      </div>
+
+      <%= form.select :category,
+                  options_for_select(
+                    Product.categories.keys.map do |category|
+                      [category.humanize, category]
+                    end,
+                    @product.category,
+                  ),
+                  { prompt: "Pick a Category" },
+                  { class: "select select-bordered w-full" } %>
+    </label>
+  </div>
+
+  <div class="space-x-2">
+    <%= form.submit @product.persisted? ? "Update" : "Add Product",
+                class: "btn btn-primary" %>
+    <% if @product.persisted? %>
+      <%= link_to "Cancel", @product, class: "btn btn-ghost" %>
+    <% else %>
+      <%= link_to "Cancel",
+      products_path,
+      class: "btn btn-ghost",
+      data: {
+        turbo_frame: "_top",
+      } %>
+    <% end %>
+  </div>
+<% end %>
