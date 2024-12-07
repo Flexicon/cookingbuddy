@@ -63,7 +63,12 @@
     <% if @product.persisted? %>
       <%= link_to "Cancel", @product, class: "btn btn-ghost" %>
     <% else %>
-      <%= link_to "Cancel", products_path, class: "btn btn-ghost" %>
+      <%= link_to "Cancel",
+      products_path,
+      class: "btn btn-ghost",
+      data: {
+        turbo_frame: "_top",
+      } %>
     <% end %>
   </div>
 <% end %>
