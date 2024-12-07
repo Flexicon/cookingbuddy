@@ -54,8 +54,7 @@
       <% end %>
     </h2>
 
-    <%#TODO: replace with product category component %>
-    <div><%= @product.category %></div>
+    <%= render ProductCategoryComponent.new(category: @product.category) %>
 
     <div class="stats">
       <div class="stat p-1">

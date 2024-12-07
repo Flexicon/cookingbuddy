@@ -30,8 +30,9 @@
           <% @products.each do |product| %>
             <tr>
               <td><%= product.name %></td>
-              <%#TODO: replace with product category component %>
-              <td><%= product.category %></td>
+              <td>
+                <%= render ProductCategoryComponent.new(category: product.category) %>
+              </td>
               <td>
                 <div class="flex gap-1">
                   <%= link_to "Show", product, class: "btn btn-ghost btn-xs" %>

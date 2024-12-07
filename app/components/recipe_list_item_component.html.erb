@@ -13,6 +13,6 @@
     data: {
       turbo_frame: "_top",
     } %>
-    <span class="text-sm text-base-content/70"><%= @recipe.category.capitalize %></span>
+    <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
   </div>
 </div>
