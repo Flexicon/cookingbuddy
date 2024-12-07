@@ -59,15 +59,11 @@
   <div class="space-x-2">
     <%= form.submit @product.persisted? ? "Update" : "Add Product",
                 class: "btn btn-primary" %>
+
     <% if @product.persisted? %>
       <%= link_to "Cancel", @product, class: "btn btn-ghost" %>
     <% else %>
-      <%= link_to "Cancel",
-      products_path,
-      class: "btn btn-ghost",
-      data: {
-        turbo_frame: "_top",
-      } %>
+      <%= link_to "Cancel", products_path, class: "btn btn-ghost" %>
     <% end %>
   </div>
 <% end %>

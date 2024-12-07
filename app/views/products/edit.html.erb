@@ -16,12 +16,10 @@
       <% end %>
     </div>
 
-    <%= turbo_frame_tag :product do %>
-      <h2 class="card-title mb-4">
-        Edit Product
-      </h2>
+    <h2 class="card-title mb-4">
+      Edit Product
+    </h2>
 
-      <%= render "form", product: @product %>
-    <% end %>
+    <%= render "form", product: @product %>
   </div>
 </div>
