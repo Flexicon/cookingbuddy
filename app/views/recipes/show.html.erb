@@ -4,16 +4,22 @@
     <img
       class="h-48 bg-base-200 w-full object-cover"
       src="https://picsum.photos/seed/<%= @recipe.name %>/900/192"
-      alt="Shoes" />
+      alt="Shoes"
+    />
   </figure>
   <div class="card-body">
     <h2 class="card-title"><%= @recipe.name %></h2>
-    <p class="text-sm mb-4"><%= @recipe.category.capitalize %></p>
+    <div class="mb-4">
+      <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
+    </div>
 
     <h3 class="font-semibold">Ingredients</h3>
     <ul class="list-disc list-inside pl-2">
       <% @recipe.ingredients.each do |ingredient| %>
-        <li><%= ingredient.amount %> <%= ingredient.unit %> <%= ingredient.product.name %></li>
+        <li>
+          <%= ingredient.amount %><%= ingredient.unit %>
+          <%= ingredient.product.name %>
+        </li>
       <% end %>
     </ul>
   </div>

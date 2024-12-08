@@ -5,7 +5,7 @@ class RecipeCategoryComponent < ViewComponent::Base
     breakfast: "badge-primary",
     lunch: "badge-accent",
     dinner: "badge-success text-gray-100",
-    dessert: "badge-info text-gray-50",
+    dessert: "badge-info",
     supper: "badge-warning"
   }
 
