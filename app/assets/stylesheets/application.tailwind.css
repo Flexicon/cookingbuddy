@@ -23,4 +23,8 @@
   .field_with_errors select {
     @apply select-error;
   }
+
+  .input {
+    @apply dark:placeholder-gray-500;
+  }
 }
