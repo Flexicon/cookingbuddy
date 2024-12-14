@@ -9,4 +9,5 @@ class Product < ApplicationRecord
   enum :category, {general: 0, protein: 1, carbohydrate: 2}
 
   validates :name, :category, presence: true
+  validates :name, uniqueness: true
 end
