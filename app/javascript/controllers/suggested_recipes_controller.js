@@ -8,7 +8,7 @@ export default class extends Controller {
 
   connect() {
     fetch(
-      `${this.baseUrlValue}/${this.categoryForTimeOfDay()}`,
+      `${this.baseUrlValue}${this.categoryForTimeOfDay()}`,
       { headers: { 'Accept': 'text/vnd.turbo-stream.html' } },
     )
       .then(response => response.text())
