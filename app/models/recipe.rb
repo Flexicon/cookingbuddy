@@ -5,7 +5,8 @@ class Recipe < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [120, 120], preprocessed: true
   end
 
-  has_many :ingredients, dependent: :destroy
+  has_many :ingredients, -> { includes :product }, dependent: :destroy, inverse_of: :recipe
+  has_many :products, through: :ingredients
 
   belongs_to :protein, -> { where category: :protein },
     class_name: "Product", optional: true, inverse_of: :recipes_as_protein

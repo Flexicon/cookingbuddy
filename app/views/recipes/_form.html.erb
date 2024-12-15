@@ -57,6 +57,16 @@
                   { prompt: "Pick a Category" },
                   { class: "select select-bordered w-full" } %>
     </label>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Image</span>
+      </div>
+      <% if @recipe.image.attached? %>
+        <%= image_tag @recipe.image, class: "mb-2" %>
+      <% end %>
+      <%= form.file_field :image, class: "file-input w-full" %>
+    </label>
   </div>
 
   <div class="space-x-2">
@@ -66,12 +76,7 @@
     <% if @recipe.persisted? %>
       <%= link_to "Cancel", @recipe, class: "btn btn-ghost" %>
     <% else %>
-      <%= link_to "Cancel",
-      recipes_path,
-      class: "btn btn-ghost",
-      data: {
-        turbo_frame: "_top",
-      } %>
+      <%= link_to "Cancel", recipes_path, class: "btn btn-ghost" %>
     <% end %>
   </div>
 <% end %>
