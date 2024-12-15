@@ -49,6 +49,9 @@ group :development, :test do
   gem "standard", ">= 1.35.1"
   gem "rubocop-rails"
   gem "rubocop-discourse"
+
+  # Better fixtures and factories
+  gem "factory_bot_rails"
 end
 
 group :development do
