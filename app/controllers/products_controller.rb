@@ -22,25 +22,23 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product
+      redirect_to @product, notice: t(".success", name: @product.name)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    @product = Product.find_by(id: params[:id])
-
     if @product.update(product_params)
-      redirect_to @product
+      redirect_to @product, notice: t(".success")
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @product.destroy
-    redirect_to products_path
+    redirect_to products_path, notice: t(".success", name: @product.name)
   end
 
   private

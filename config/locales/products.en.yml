@@ -1,0 +1,9 @@
+
+en:
+  products:
+    create:
+      success: "Added product: %{name}"
+    update:
+      success: "Updated product"
+    destroy:
+      success: "Removed product: %{name}"

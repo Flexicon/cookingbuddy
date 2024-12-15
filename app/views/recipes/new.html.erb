@@ -1,7 +1,7 @@
 <div class="card bg-base-100 shadow-xl">
   <div class="card-body">
     <div>
-      <%= link_to products_path, class: "btn btn-ghost btn-xs" do %>
+      <%= link_to root_path, class: "btn btn-ghost btn-xs", data: { turbo_frame: "_top" } do %>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -12,14 +12,14 @@
           stroke-linejoin="round"
           class="w-4 h-4"
         ><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Back to Products
+        Back to Home
       <% end %>
     </div>
 
     <h2 class="card-title mb-4">
-      New Product
+      New Recipe
     </h2>
 
-    <%= render "form", product: @product %>
+    <%= render "form", recipe: @recipe %>
   </div>
 </div>

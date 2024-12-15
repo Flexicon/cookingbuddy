@@ -17,6 +17,8 @@
     </div>
 
     <%= turbo_frame_tag :product do %>
+      <%= turbo_stream.update :flash, partial: "shared/flashes" %>
+
       <h2 class="card-title mb-4">
         <span>Product:</span>
         <span><%= @product.name %></span>
@@ -37,7 +39,7 @@
         <%= button_to @product,
         class: "btn btn-ghost btn-xs",
         method: :delete,
-        title: "Destroy",
+        title: "Remove",
         data: {
           turbo_confirm: "Are you sure?",
           turbo_frame: "_top",

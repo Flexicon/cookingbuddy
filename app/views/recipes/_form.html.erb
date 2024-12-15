@@ -1,9 +1,9 @@
-<%= form_with model: product, class: "w-full max-w-sm" do |form| %>
+<%= form_with model: recipe, class: "w-full max-w-sm" do |form| %>
   <%= turbo_stream.update :flash, partial: "shared/flashes" %>
 
   <div class="space-y-4 mb-6">
     <%#TODO: refactor errors into a component? %>
-    <% if product.errors.any? %>
+    <% if recipe.errors.any? %>
       <div class="alert alert-error">
         <div class="flex-1">
           <svg
@@ -22,9 +22,9 @@
           </svg>
         </div>
         <div class="flex-1">
-          <label class="font-bold">Oops, couldn't save this product</label>
+          <label class="font-bold">Oops, couldn't save this recipe</label>
           <ul>
-            <% product.errors.full_messages.each do |message| %>
+            <% recipe.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>
@@ -38,7 +38,7 @@
       </div>
       <%= form.text_field :name,
                       class: "input input-bordered w-full",
-                      placeholder: "Tomato",
+                      placeholder: "Tomato Soup",
                       autofocus: true %>
     </label>
 
@@ -49,10 +49,10 @@
 
       <%= form.select :category,
                   options_for_select(
-                    Product.categories.keys.map do |category|
+                    Recipe.categories.keys.map do |category|
                       [category.humanize, category]
                     end,
-                    @product.category,
+                    @recipe.category,
                   ),
                   { prompt: "Pick a Category" },
                   { class: "select select-bordered w-full" } %>
@@ -60,14 +60,14 @@
   </div>
 
   <div class="space-x-2">
-    <%= form.submit @product.persisted? ? "Update" : "Add Product",
+    <%= form.submit @recipe.persisted? ? "Update" : "Add Recipe",
                 class: "btn btn-primary" %>
 
-    <% if @product.persisted? %>
-      <%= link_to "Cancel", @product, class: "btn btn-ghost" %>
+    <% if @recipe.persisted? %>
+      <%= link_to "Cancel", @recipe, class: "btn btn-ghost" %>
     <% else %>
       <%= link_to "Cancel",
-      products_path,
+      recipes_path,
       class: "btn btn-ghost",
       data: {
         turbo_frame: "_top",

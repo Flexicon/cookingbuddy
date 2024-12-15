@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
 class Recipe < ApplicationRecord
-  image_variations = {
-    thumb: {resize_to_limit: [120, 120]}
-  }
-
   has_one_attached :image do |attachable|
-    attachable.variant :thumb, **image_variations[:thumb], preprocessed: true
+    attachable.variant :thumb, resize_to_limit: [120, 120], preprocessed: true
   end
 
   has_many :ingredients, dependent: :destroy
@@ -19,6 +15,8 @@ class Recipe < ApplicationRecord
 
   enum :category, {breakfast: 0, lunch: 1, dinner: 2, supper: 3, dessert: 4}
 
+  validates :name, :category, presence: true
+  validates :name, uniqueness: true
   validate :protein_must_be_a_protein
   validate :carbohydrate_must_be_a_carbohydrate
 

@@ -17,7 +17,22 @@
   <!-- Recipes Table -->
   <div class="card bg-base-100 shadow-xl overflow-x-auto flex-1">
     <div class="card-body">
-      <h2 class="card-title mb-6">Recipes</h2>
+      <h2 class="card-title mb-6 flex justify-between">
+        <span>Recipes</span>
+        <%= link_to new_recipe_path, class: "btn btn-primary btn-outline btn-sm" do %>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-4 h-4"
+          ><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          Add
+        <% end %>
+      </h2>
 
       <%#TODO: add filters %>
       <%= render RecipeListComponent.new(recipes: @recipes) %>

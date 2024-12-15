@@ -1,0 +1,9 @@
+
+en:
+  recipes:
+    create:
+      success: "Added recipe for %{name}"
+    update:
+      success: "Updated recipe"
+    destroy:
+      success: "Recipe %{name} removed"

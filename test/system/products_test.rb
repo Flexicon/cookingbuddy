@@ -17,6 +17,7 @@ class ProductsTest < ApplicationSystemTestCase
 
     click_on "Add Product"
 
+    assert_text "Added product: Ancient Potato"
     assert_selector "h2", text: "Product:\nAncient Potato"
   end
 
@@ -37,7 +38,7 @@ class ProductsTest < ApplicationSystemTestCase
     click_on "Add"
 
     fill_in "Name", with: products(:one).name
-    select "Carbohydrate", from: "General"
+    select "Carbohydrate", from: "Category"
 
     click_on "Add Product"
 
