@@ -72,3 +72,7 @@ end
 gem "devise", "~> 4.9"
 
 gem "view_component", "~> 3.20"
+
+# Use Active Storage with Minio (s3 compatible) for file uploads [https://guides.rubyonrails.org/active_storage_overview.html]
+gem "aws-sdk-s3"
+gem "image_processing", "~> 1.2"

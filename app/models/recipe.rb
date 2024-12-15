@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Recipe < ApplicationRecord
+  image_variations = {
+    thumb: {resize_to_limit: [120, 120]}
+  }
+
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, **image_variations[:thumb], preprocessed: true
+  end
+
   has_many :ingredients, dependent: :destroy
 
   belongs_to :protein, -> { where category: :protein },
@@ -13,6 +21,14 @@ class Recipe < ApplicationRecord
 
   validate :protein_must_be_a_protein
   validate :carbohydrate_must_be_a_carbohydrate
+
+  def image_or_placeholder(variant: nil, placeholder_options: {})
+    if image.attached?
+      variant ? image.variant(variant) : image
+    else
+      ImagesHelper.placeholder_image_url(key: name, **placeholder_options)
+    end
+  end
 
   private
 
