@@ -18,5 +18,5 @@ module.exports = {
     'btn-error',
     'btn-success',
     'btn-info',
-  ]
+  ],
 };

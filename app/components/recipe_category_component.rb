@@ -4,7 +4,7 @@ class RecipeCategoryComponent < ViewComponent::Base
   VARIANT = {
     breakfast: "badge-primary",
     lunch: "badge-accent",
-    dinner: "badge-success text-gray-100",
+    dinner: "badge-success",
     dessert: "badge-info",
     supper: "badge-warning"
   }

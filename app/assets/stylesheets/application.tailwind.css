@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-gray-50 dark:bg-gray-900 min-h-lvh;
+  @apply bg-base-200 dark:bg-base-300 min-h-lvh;
 }
 
 @layer components {
   .alert-alert {
     @apply alert-warning;
+  }
+
+  .alert-notice {
+    @apply bg-base-100;
   }
 
   .btn-alert {
