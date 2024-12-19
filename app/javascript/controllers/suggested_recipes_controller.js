@@ -2,13 +2,21 @@ import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="suggested-recipes"
 export default class extends Controller {
+  static targets = ['title']
+
   static values = {
     baseUrl: String
   }
 
   connect() {
+    const category = this.categoryForTimeOfDay();
+
+    if (this.hasTitleTarget) {
+      this.titleTarget.textContent = `Recipes for ${category}`;
+    }
+
     fetch(
-      `${this.baseUrlValue}${this.categoryForTimeOfDay()}`,
+      `${this.baseUrlValue}${category}`,
       { headers: { 'Accept': 'text/vnd.turbo-stream.html' } },
     )
       .then(response => response.text())
