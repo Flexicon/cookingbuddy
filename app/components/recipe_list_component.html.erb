@@ -1,12 +1,10 @@
-<div class="recipes-list">
+<div class=" recipes-list flex flex-col sm:flex-row sm:flex-wrap gap-4 ">
   <% @recipes.each do |recipe| %>
-    <div class="mb-4">
+    <div class="sm:basis-60">
       <%= render RecipeListItemComponent.new(recipe: recipe) %>
     </div>
   <% end %>
   <% if @recipes.empty? %>
-    <div class="text-center">
-      <p class="text-gray-500"><%= @blank_message %></p>
-    </div>
+    <p class="text-gray-500"><%= @blank_message %></p>
   <% end %>
 </div>
