@@ -1,20 +1,6 @@
-<div class="flex flex-col lg:flex-row-reverse lg:justify-between gap-4">
-  <div class="card bg-base-100 shadow-xl">
-    <div
-      class="card-body"
-      data-controller="suggested-recipes"
-      data-suggested-recipes-base-url-value="<%= by_category_recipes_path(category: "") %>"
-    >
-      <h2 class="card-title mb-6" data-suggested-recipes-target="title">Recipes for ...</h2>
-
-      <div id="recipes_by_category">
-        <%= render RecipeListSkeletonComponent.new %>
-      </div>
-
-    </div>
-  </div>
-  <!-- Recipes Table -->
-  <div class="card bg-base-100 shadow-xl overflow-x-auto flex-1">
+<div class="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_300px] gap-4">
+  <!-- Recipes List -->
+  <div class="card bg-base-100 shadow-xl overflow-x-auto">
     <div class="card-body">
       <h2 class="card-title mb-6 flex justify-between">
         <span>Recipes</span>
@@ -35,6 +21,21 @@
 
       <%#TODO: add filters %>
       <%= render RecipeListComponent.new(recipes: @recipes) %>
+    </div>
+  </div>
+  <!-- Suggested Recipes -->
+  <div class="card bg-base-100 shadow-xl">
+    <div
+      class="card-body"
+      data-controller="suggested-recipes"
+      data-suggested-recipes-base-url-value="<%= by_category_recipes_path(category: "") %>"
+    >
+      <h2 class="card-title mb-6" data-suggested-recipes-target="title">Recipes for ...</h2>
+
+      <div id="recipes_by_category">
+        <%= render RecipeListSkeletonComponent.new %>
+      </div>
+
     </div>
   </div>
 </div>
