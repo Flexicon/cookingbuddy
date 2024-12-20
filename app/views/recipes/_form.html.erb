@@ -65,7 +65,7 @@
       <% if @recipe.image.attached? %>
         <%= image_tag @recipe.image, class: "mb-2" %>
       <% end %>
-      <%= form.file_field :image, class: "file-input w-full" %>
+      <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
     </label>
   </div>
 
