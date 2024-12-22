@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [120, 120], preprocessed: true
   end
 
+  has_rich_text :instructions
+
   has_many :ingredients, -> { includes :product }, dependent: :destroy, inverse_of: :recipe
   has_many :products, through: :ingredients
 

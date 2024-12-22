@@ -53,5 +53,11 @@
     </div>
 
     <%= render "ingredients", recipe: @recipe %>
+
+    <% if @recipe.instructions.present? %>
+      <hr/>
+      <h3 class="text-lg font-semibold">Instructions</h3>
+      <%= @recipe.instructions %>
+    <% end %>
   </div>
 <% end %>
