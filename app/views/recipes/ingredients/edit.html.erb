@@ -1,0 +1,9 @@
+<%= turbo_frame_tag :modal do %>
+  <dialog class="modal modal-bottom sm:modal-middle" data-controller="modals">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Change Ingredient</h3>
+
+      <%= render "form" %>
+    </div>
+  </dialog>
+<% end %>

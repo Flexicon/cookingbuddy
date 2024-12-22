@@ -1,0 +1,77 @@
+<%= form_with model: [@recipe, @ingredient], class: "w-full" do |form| %>
+  <div class="space-y-4 mb-6">
+    <%#TODO: refactor errors into a component? %>
+    <% if @ingredient.errors.any? %>
+      <div class="alert alert-error">
+        <div class="flex-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-6 h-6"
+          >
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12" y2="16"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <label class="font-bold">Oops, couldn't save this ingredient</label>
+          <ul>
+            <% @ingredient.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Product</span>
+      </div>
+
+      <%= form.select :product_id,
+                  options_for_select(
+                    Product.all.map { |product| [product.name, product.id] },
+                    @ingredient.product_id,
+                  ),
+                  { prompt: "Pick a product" },
+                  { class: "select select-bordered w-full" } %>
+    </label>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Amount</span>
+      </div>
+      <%= form.number_field :amount,
+                        class: "input input-bordered w-full",
+                        placeholder: "10",
+                        min: 1 %>
+    </label>
+
+    <label class="form-control">
+      <div class="label">
+        <span class="label-text">Unit</span>
+      </div>
+
+      <%= form.select :unit,
+                  options_for_select(
+                    %w[g kg ml l tsp tbsp cup oz lb],
+                    @ingredient.unit,
+                  ),
+                  { prompt: "Pick a unit" },
+                  { class: "select select-bordered w-full" } %>
+    </label>
+  </div>
+
+  <div class="modal-action">
+    <%= form.submit @ingredient.persisted? ? "Update" : "Add Product",
+                class: "btn btn-primary" %>
+    <button class="btn" data-action="click->modals#close">Never mind</button>
+  </div>
+<% end %>

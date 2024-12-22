@@ -1,0 +1,35 @@
+<%= turbo_frame_tag dom_id(@recipe, :ingredients) do %>
+  <h3 class="font-semibold mb-2">
+    <span>Ingredients</span>
+    <%= link_to new_recipe_ingredient_path(recipe),
+        class: "btn btn-ghost btn-xs",
+        data: { turbo_frame: "modal" } do %>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-4 h-4"
+      ><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+    <% end %>
+  </h3>
+  <div class="flex flex-col gap-2 w-full max-w-sm">
+    <% recipe.ingredients.each do |ingredient| %>
+      <div
+        class="
+          px-2 py-1 border border-transparent hover:border-base-300 rounded-lg
+        "
+      >
+        <%= link_to ingredient,
+        edit_recipe_ingredient_path(recipe, ingredient),
+        class: "link link-hover",
+        data: {
+          turbo_frame: "modal",
+        } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

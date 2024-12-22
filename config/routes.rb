@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     collection do
       get "by_category/:category", action: :by_category, as: :by_category
     end
+
+    resources :ingredients, only: %i[new create edit update destroy], module: :recipes
   end
 
   resources :products

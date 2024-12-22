@@ -1,0 +1,6 @@
+<%= turbo_stream.update "modal" %>
+<%= turbo_stream.replace dom_id(@recipe, :ingredients),
+                     partial: "recipes/ingredients",
+                     locals: {
+                       recipe: @recipe,
+                     } %>

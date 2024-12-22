@@ -52,14 +52,6 @@
       <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
     </div>
 
-    <h3 class="font-semibold">Ingredients</h3>
-    <ul class="list-disc list-inside pl-2">
-      <% @recipe.ingredients.each do |ingredient| %>
-        <li>
-          <%= ingredient.amount %><%= ingredient.unit %>
-          <%= ingredient.product.name %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render "ingredients", recipe: @recipe %>
   </div>
 <% end %>

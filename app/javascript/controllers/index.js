@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ModalsController from "./modals_controller"
+application.register("modals", ModalsController)
+
 import SelfYeeterController from "./self_yeeter_controller"
 application.register("self-yeeter", SelfYeeterController)
 
