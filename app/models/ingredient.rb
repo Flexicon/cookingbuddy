@@ -4,7 +4,7 @@ class Ingredient < ApplicationRecord
   belongs_to :recipe
   belongs_to :product
 
-  validates :unit, :amount, presence: true
+  validates :amount, presence: true
 
   def to_s
     "#{product.name} - #{amount} #{unit}"
