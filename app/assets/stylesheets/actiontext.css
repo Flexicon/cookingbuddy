@@ -442,3 +442,8 @@ trix-editor .attachment__metadata {
 .trix-content ol, .trix-content ul {
   list-style: revert;
 }
+
+trix-toolbar .trix-button:not(.trix-active) {
+  filter: invert(100%);
+}
+
