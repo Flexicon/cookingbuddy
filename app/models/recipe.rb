@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 class Recipe < ApplicationRecord
-  has_one_attached :image do |attachable|
-    attachable.variant :thumb, resize_to_limit: [120, 120], preprocessed: true
-  end
-
-  has_rich_text :instructions
-
   has_many :ingredients, -> { includes :product }, dependent: :destroy, inverse_of: :recipe
   has_many :products, through: :ingredients
 
@@ -15,6 +9,12 @@ class Recipe < ApplicationRecord
 
   belongs_to :carbohydrate, -> { where category: :carbohydrate },
     class_name: "Product", optional: true, inverse_of: :recipes_as_carbohydrate
+
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [120, 120], preprocessed: true
+  end
+
+  has_rich_text :instructions
 
   enum :category, {breakfast: 0, lunch: 1, dinner: 2, supper: 3, dessert: 4}
 

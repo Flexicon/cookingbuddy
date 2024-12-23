@@ -60,10 +60,7 @@
       </div>
 
       <%= form.select :unit,
-                  options_for_select(
-                    %w[g kg ml l tsp tbsp cup oz lb],
-                    @ingredient.unit,
-                  ),
+                  options_for_select(Ingredient.units, @ingredient.unit || "g"),
                   { prompt: "Pick a unit" },
                   { class: "select select-bordered w-full" } %>
     </label>
