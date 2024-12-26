@@ -4,6 +4,7 @@ module Recipes
   class IngredientsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_recipe
+    before_action :set_products, only: %i[new edit create update]
     before_action :set_ingredient, only: %i[edit update destroy]
 
     def new
@@ -49,6 +50,10 @@ module Recipes
 
     def set_recipe
       @recipe = Recipe.find(params[:recipe_id])
+    end
+
+    def set_products
+      @products = Product.order(name: :asc).all
     end
 
     def set_ingredient
