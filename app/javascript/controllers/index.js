@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
-import ComboBoxController from "./combo_box_controller"
-application.register("combo-box", ComboBoxController)
-
 import ModalsController from "./modals_controller"
 application.register("modals", ModalsController)
+
+import SelectController from "./select_controller"
+application.register("select", SelectController)
 
 import SelfYeeterController from "./self_yeeter_controller"
 application.register("self-yeeter", SelfYeeterController)

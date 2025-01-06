@@ -1,4 +1,5 @@
 @import 'actiontext.css';
+@import 'tom-select/dist/css/tom-select';
 
 @tailwind base;
 @tailwind components;
@@ -32,5 +33,68 @@
 
   .input {
     @apply dark:placeholder-gray-500;
+  }
+
+  /* Tom-Select */
+  .ts-control {
+    @apply select select-bordered text-base-content;
+  }
+
+  .ts-control input {
+    @apply text-base-content;
+  }
+
+  .ts-dropdown-content:focus {
+    @apply shadow-xl;
+  }
+
+  .ts-wrapper.plugin-remove_button .item {
+    @apply rounded-md;
+  }
+  .ts-wrapper.multi .ts-control > div {
+    @apply p-0 m-0 pl-1;
+  }
+
+  .ts-wrapper.plugin-remove_button .item .remove {
+    @apply border-none text-lg leading-none py-1 rounded-r-lg;
+  }
+
+  .ts-dropdown {
+    @apply rounded-md border border-solid border-t border-gray-300 dark:border-gray-600 shadow-xl;
+  }
+
+  .ts-dropdown [data-selectable].option:first-child {
+    @apply rounded-t;
+  }
+
+  .ts-dropdown [data-selectable].option:last-child {
+    @apply rounded-b;
+  }
+
+  .ts-dropdown .create:hover,
+  .ts-dropdown .option:hover,
+  .ts-dropdown .active {
+    @apply bg-primary text-primary-content;
+  }
+
+  .ts-wrapper .option .title {
+    display: block;
+  }
+
+  .ts-wrapper .option .url {
+    @apply block text-base-content text-sm;
+  }
+
+  .ts-dropdown-content {
+    @apply bg-base-200 text-base-content rounded-[5px];
+  }
+
+  .ts-wrapper.single .ts-control,
+  .ts-dropdown.single {
+    @apply bg-base-100 !important;
+  }
+
+  .ts-control .item {
+    @apply text-base-content;
   }
 }

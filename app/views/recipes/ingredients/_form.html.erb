@@ -35,42 +35,13 @@
         <span class="label-text">Product</span>
       </div>
 
-      <div data-controller="combo-box" class="relative w-full">
-        <input
-          type="text"
-          id="product_autocomplete"
-          class="input input-bordered w-full"
-          placeholder="Pick a product"
-          data-combo-box-target="input"
-          data-action="
-            input->combo-box#filter
-            keydown->combo-box#navigate
-            blur->combo-box#blur
-            click->combo-box#open
-          "
-          value="<%= @ingredient.product&.name %>"
-        />
-        <%= form.hidden_field :product_id, data: { "combo-box-target": "hiddenField" } %>
-        <ul
-          class="
-            absolute z-10 w-full mt-1 bg-base-300 shadow-lg rounded-md hidden
-          "
-          data-combo-box-target="dropdown"
-        >
-          <% @products.each do |product| %>
-            <li
-              class="
-                cursor-pointer px-4 py-2 rounded-md hover:bg-primary hover:text-primary-content
-              "
-              data-id="<%= product.id %>"
-              data-name="<%= product.name %>"
-              data-action="click->combo-box#select mouseover->combo-box#hover"
-            >
-              <%= product.name %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+      <%= form.select :product_id,
+                  options_for_select(
+                    @products.map { |product| [product.name, product.id] },
+                    @ingredient.product_id,
+                  ),
+                  { prompt: "Pick a Category" },
+                  { data: { controller: "select" } } %>
     </label>
 
     <label class="form-control">
