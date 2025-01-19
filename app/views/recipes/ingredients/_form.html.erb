@@ -40,7 +40,7 @@
                     @products.map { |product| [product.name, product.id] },
                     @ingredient.product_id,
                   ),
-                  { prompt: "Pick a Category" },
+                  { prompt: "Pick a Product" },
                   { data: { controller: "select" } } %>
     </label>
 
@@ -62,7 +62,7 @@
       <%= form.select :unit,
                   options_for_select(Ingredient.units, @ingredient.unit || "g"),
                   { prompt: "Pick a unit" },
-                  { class: "select select-bordered w-full" } %>
+                  { data: { controller: "select" } } %>
     </label>
   </div>
 
