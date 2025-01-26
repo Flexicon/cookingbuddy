@@ -27,7 +27,7 @@ class ProductsTest < ApplicationSystemTestCase
     click_on "Add"
     click_on "Add Product"
 
-    assert_text "Oops, couldn't save this product"
+    assert_text "Oops, couldn't save this Product"
     assert_text "Name can't be blank"
     assert_text "Category can't be blank"
   end
@@ -42,7 +42,7 @@ class ProductsTest < ApplicationSystemTestCase
 
     click_on "Add Product"
 
-    assert_text "Oops, couldn't save this product"
+    assert_text "Oops, couldn't save this Product"
     assert_text "Name has already been taken"
   end
 end

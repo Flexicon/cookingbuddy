@@ -27,7 +27,7 @@ class RecipesTest < ApplicationSystemTestCase
     click_on "Add"
     click_on "Add Recipe"
 
-    assert_text "Oops, couldn't save this recipe"
+    assert_text "Oops, couldn't save this Recipe"
     assert_text "Name can't be blank"
     assert_text "Category can't be blank"
   end
@@ -42,7 +42,7 @@ class RecipesTest < ApplicationSystemTestCase
 
     click_on "Add Recipe"
 
-    assert_text "Oops, couldn't save this recipe"
+    assert_text "Oops, couldn't save this Recipe"
     assert_text "Name has already been taken"
   end
 end
