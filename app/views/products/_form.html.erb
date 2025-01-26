@@ -2,35 +2,7 @@
   <%= turbo_stream.update :flash, partial: "shared/flashes" %>
 
   <div class="space-y-4 mb-6">
-    <%#TODO: refactor errors into a component? %>
-    <% if product.errors.any? %>
-      <div class="alert alert-error">
-        <div class="flex-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="w-6 h-6"
-          >
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12" y2="16"/>
-          </svg>
-        </div>
-        <div class="flex-1">
-          <label class="font-bold">Oops, couldn't save this product</label>
-          <ul>
-            <% product.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+    <%= render FormErrorsComponent.new(model: @product) %>
 
     <label class="form-control">
       <div class="label">
