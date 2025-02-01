@@ -1,7 +1,5 @@
-import daisyui from 'daisyui';
-
 module.exports = {
-  plugins: [daisyui],
+  plugins: [require('daisyui')],
   content: [
     './app/components/**/*',
     './app/views/**/*.html.erb',
