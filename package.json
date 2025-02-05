@@ -17,5 +17,6 @@
   },
   "devDependencies": {
     "daisyui": "^4.12.14"
-  }
+  },
+  "packageManager": "pnpm@7.12.2+sha1.9908aafac1fa95c4d09f6f4916e98440804dd203"
 }
