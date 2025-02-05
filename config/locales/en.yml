@@ -31,3 +31,5 @@ en:
   flash:
     alert:
       ack_button: 'OK'
+  registrations:
+    disabled: 'Registrations are not open.'
