@@ -1,5 +1,5 @@
-@import 'actiontext.css';
-@import 'tom-select/dist/css/tom-select';
+@import "actiontext.css";
+@import "tom-select/dist/css/tom-select";
 
 @tailwind base;
 @tailwind components;
@@ -28,6 +28,10 @@
   }
 
   .field_with_errors select {
+    @apply select-error;
+  }
+
+  .field_with_errors .ts-control {
     @apply select-error;
   }
 
