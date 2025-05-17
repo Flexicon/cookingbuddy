@@ -7,23 +7,26 @@
         <span class="label-text">Product</span>
       </div>
 
-      <%= form.select :product_id,
-                  options_for_select(
-                    @products.map { |product| [product.name, product.id] },
-                    @ingredient.product_id,
-                  ),
-                  { include_blank: "Pick a Product" },
-                  { data: { controller: "select" } } %>
+      <%= form.collection_select(
+        :product_id,
+        @products,
+        :id,
+        :name,
+        { include_blank: "Pick a Product" },
+        { data: { controller: "select" } },
+      ) %>
     </label>
 
     <label class="form-control">
       <div class="label">
         <span class="label-text">Amount</span>
       </div>
-      <%= form.number_field :amount,
-                        class: "input input-bordered w-full",
-                        placeholder: "10",
-                        min: 1 %>
+      <%= form.number_field(
+        :amount,
+        class: "input input-bordered w-full",
+        placeholder: "10",
+        min: 1,
+      ) %>
     </label>
 
     <label class="form-control">
@@ -31,10 +34,12 @@
         <span class="label-text">Unit</span>
       </div>
 
-      <%= form.select :unit,
-                  options_for_select(Ingredient.units, @ingredient.unit || "g"),
-                  { include_blank: "Pick a unit" },
-                  { data: { controller: "select" } } %>
+      <%= form.select(
+        :unit,
+        options_for_select(Ingredient.units.keys, @ingredient.unit || "g"),
+        { include_blank: "Pick a unit" },
+        { data: { controller: "select" } },
+      ) %>
     </label>
   </div>
 
