@@ -1,5 +1,6 @@
-<%= form_with model: recipe, class: "w-full max-w-sm" do |form| %>
+<%= form_with model: recipe, class: "w-full" do |form| %>
   <%= turbo_stream.update :flash, partial: "shared/flashes" %>
+  <% is_editing = @recipe.persisted? %>
 
   <div class="space-y-4 mb-6">
     <%= render FormErrorsComponent.new(model: @recipe) %>
@@ -30,34 +31,31 @@
                   { data: { controller: "select" } } %>
     </label>
 
-    <label class="form-control" for="instructions">
-      <div class="label">
-        <span class="label-text">Instructions</span>
+    <%# New recipe forms should be simple - show other fields during edit %>
+    <% if is_editing %>
+      <label class="form-control" for="instructions">
+        <div class="label">
+          <span class="label-text">Instructions</span>
+        </div>
+      </label>
+      <div>
+        <%= form.rich_textarea :instructions %>
       </div>
-    </label>
-    <div>
-      <%= form.rich_textarea :instructions %>
-    </div>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Image</span>
-      </div>
-      <% if @recipe.image.attached? %>
-        <%= image_tag @recipe.image, class: "mb-2" %>
-      <% end %>
-      <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
-    </label>
+      <label class="form-control">
+        <div class="label">
+          <span class="label-text">Image</span>
+        </div>
+        <% if @recipe.image.attached? %>
+          <%= image_tag @recipe.image, class: "mb-2" %>
+        <% end %>
+        <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
+      </label>
+    <% end %>
   </div>
 
-  <div class="space-x-2">
-    <%= form.submit @recipe.persisted? ? "Update" : "Add Recipe",
-                class: "btn btn-primary" %>
-
-    <% if @recipe.persisted? %>
-      <%= link_to "Cancel", @recipe, class: "btn btn-ghost" %>
-    <% else %>
-      <%= link_to "Cancel", recipes_path, class: "btn btn-ghost" %>
-    <% end %>
+  <div class="modal-action">
+    <%= form.submit is_editing ? "Update" : "Add Recipe", class: "btn btn-primary" %>
+    <button class="btn" data-action="click->modals#close">Never mind</button>
   </div>
 <% end %>

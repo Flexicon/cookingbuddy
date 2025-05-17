@@ -4,7 +4,11 @@
     <div class="card-body">
       <h2 class="card-title mb-6 flex justify-between">
         <span>Recipes</span>
-        <%= link_to new_recipe_path, class: "btn btn-primary btn-outline btn-sm" do %>
+        <%= link_to(
+          new_recipe_path,
+          class: "btn btn-primary btn-outline btn-sm",
+          data: { turbo_frame: "modal" },
+        ) do %>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

@@ -1,9 +1,9 @@
-<%= turbo_frame_tag :recipe, class: "card bg-base-100 shadow-xl" do %>
-  <div class="card-body">
-    <h2 class="card-title mb-4">
-      Edit Recipe
-    </h2>
+<%= turbo_frame_tag :modal do %>
+  <dialog class="modal modal-bottom sm:modal-middle" data-controller="modals">
+    <div class="modal-box">
+      <h2 class="text-xl font-bold mb-1">Edit Recipe</h2>
 
-    <%= render "form", recipe: @recipe %>
-  </div>
+      <%= render "form", recipe: @recipe %>
+    </div>
+  </dialog>
 <% end %>

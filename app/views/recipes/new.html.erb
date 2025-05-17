@@ -1,25 +1,9 @@
-<div class="card bg-base-100 shadow-xl">
-  <div class="card-body">
-    <div>
-      <%= link_to root_path, class: "btn btn-ghost btn-xs", data: { turbo_frame: "_top" } do %>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="w-4 h-4"
-        ><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-        Back to Home
-      <% end %>
+<%= turbo_frame_tag :modal do %>
+  <dialog class="modal modal-bottom sm:modal-middle" data-controller="modals">
+    <div class="modal-box">
+      <h2 class="text-xl font-bold mb-1">New Recipe</h2>
+
+      <%= render "form", recipe: @recipe %>
     </div>
-
-    <h2 class="card-title mb-4">
-      New Recipe
-    </h2>
-
-    <%= render "form", recipe: @recipe %>
-  </div>
-</div>
+  </dialog>
+<% end %>
