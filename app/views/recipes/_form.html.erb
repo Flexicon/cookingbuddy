@@ -46,10 +46,10 @@
         <div class="label">
           <span class="label-text">Image</span>
         </div>
-        <% if @recipe.image.attached? %>
-          <%= image_tag @recipe.image, class: "mb-2" %>
-        <% end %>
         <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
+        <% if @recipe.image.attached? %>
+          <%= image_tag @recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
+        <% end %>
       </label>
     <% end %>
   </div>
