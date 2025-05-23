@@ -22,9 +22,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
+      flash[:notice] = t(".success", name: @recipe.name)
+
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @recipe, notice: t(".success", name: @recipe.name) }
+        format.html { redirect_to @recipe }
       end
     else
       render :new, status: :unprocessable_entity
@@ -33,9 +35,11 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
+      flash.now[:notice] = t(".success")
+
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @recipe, notice: t(".success") }
+        format.html { redirect_to @recipe }
       end
     else
       render :edit, status: :unprocessable_entity
