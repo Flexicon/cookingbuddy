@@ -1,5 +1,5 @@
-<%= turbo_stream.update "modal" %>
-<%= turbo_stream.append "head" do %>
+<%= turbo_stream.update :modal %>
+<%= turbo_stream.append :head do %>
   <script>
     Turbo.visit("<%= recipe_path(@recipe) %>");
   </script>
