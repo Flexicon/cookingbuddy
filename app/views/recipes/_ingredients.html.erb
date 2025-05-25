@@ -4,16 +4,7 @@
     <%= link_to new_recipe_ingredient_path(recipe),
         class: "btn btn-ghost btn-xs",
         data: { turbo_frame: "modal" } do %>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="w-4 h-4"
-      ><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+      <%= lucide_icon("circle-plus", class: "h-4 w-4") %>
     <% end %>
   </h3>
   <div class="flex flex-col gap-2 w-full max-w-sm">
@@ -28,22 +19,13 @@
         } %>
 
         <%= button_to [@recipe, ingredient],
-        class: "btn btn-ghost btn-xs opacity-0 group-hover:opacity-100",
+        class: "btn btn-ghost btn-xs md:opacity-0 md:group-hover:opacity-100",
         method: :delete,
         title: "Remove",
         data: {
           turbo_confirm: "Remove ingredient?",
         } do %>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="w-4 h-4"
-          ><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+          <%= lucide_icon("trash-2", class: "h-4 w-4") %>
         <% end %>
       </div>
     <% end %>

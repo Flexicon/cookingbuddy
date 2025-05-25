@@ -75,3 +75,6 @@ gem "view_component", "~> 3.23"
 
 # Use Active Storage with Minio (s3 compatible) for file uploads [https://guides.rubyonrails.org/active_storage_overview.html]
 gem "aws-sdk-s3"
+
+# Lucide icons helpers for rails [https://github.com/heyvito/lucide-rails]
+gem "lucide-rails"
