@@ -18,7 +18,7 @@ class ProductsTest < ApplicationSystemTestCase
     click_on "Add Product"
 
     assert_text "Added product: Ancient Potato"
-    assert_selector "h2", text: "Product:\nAncient Potato"
+    assert_selector "h2", text: "Ancient Potato"
   end
 
   test "should validate empty product form" do

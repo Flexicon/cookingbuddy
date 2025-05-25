@@ -13,7 +13,6 @@ class RecipesTest < ApplicationSystemTestCase
     click_on "Add"
 
     fill_in "Name", with: "Ancient Potato Soup"
-    select "Lunch", from: "Category"
 
     click_on "Add Recipe"
 
@@ -29,7 +28,6 @@ class RecipesTest < ApplicationSystemTestCase
 
     assert_text "Oops, couldn't save this Recipe"
     assert_text "Name can't be blank"
-    assert_text "Category can't be blank"
   end
 
   test "should validate recipe uniqueness" do
@@ -38,7 +36,6 @@ class RecipesTest < ApplicationSystemTestCase
     click_on "Add"
 
     fill_in "Name", with: recipes(:one).name
-    select "Dinner", from: "Category"
 
     click_on "Add Recipe"
 
