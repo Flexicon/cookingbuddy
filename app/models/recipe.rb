@@ -27,7 +27,7 @@ class Recipe < ApplicationRecord
     if image.attached?
       variant ? image.variant(variant) : image
     else
-      ImagesHelper.placeholder_image_url(key: name, **placeholder_options)
+      ImagesHelper.placeholder_image_url(key: id, **placeholder_options)
     end
   end
 
