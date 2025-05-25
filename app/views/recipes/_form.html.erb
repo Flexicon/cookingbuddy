@@ -9,10 +9,12 @@
       <div class="label">
         <span class="label-text">Name</span>
       </div>
-      <%= form.text_field :name,
-                      class: "input input-bordered w-full",
-                      placeholder: "Tomato Soup",
-                      autofocus: true %>
+      <%= form.text_field(
+        :name,
+        class: "input input-bordered w-full",
+        placeholder: "Tomato Soup",
+        autofocus: true,
+      ) %>
     </label>
 
     <%# New recipe forms should be simple - show other fields during edit and set default category %>
@@ -24,15 +26,15 @@
           <span class="label-text">Category</span>
         </div>
 
-        <%= form.select :category,
-                    options_for_select(
-                      Recipe.categories.keys.map do |category|
-                        [category.humanize, category]
-                      end,
-                      @recipe.category,
-                    ),
-                    { prompt: "Pick a Category" },
-                    { data: { controller: "select" } } %>
+        <%= form.select(
+          :category,
+          options_for_select(
+            Recipe.categories.keys.map { |category| [category.humanize, category] },
+            @recipe.category,
+          ),
+          { prompt: "Pick a Category" },
+          { data: { controller: "select" } },
+        ) %>
       </label>
 
       <label class="form-control" for="instructions">
