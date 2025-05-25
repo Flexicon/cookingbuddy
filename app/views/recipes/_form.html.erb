@@ -15,24 +15,26 @@
                       autofocus: true %>
     </label>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Category</span>
-      </div>
+    <%# New recipe forms should be simple - show other fields during edit and set default category %>
+    <% unless is_editing %>
+      <%= form.hidden_field :category, value: @recipe.category %>
+    <% else %>
+      <label class="form-control">
+        <div class="label">
+          <span class="label-text">Category</span>
+        </div>
 
-      <%= form.select :category,
-                  options_for_select(
-                    Recipe.categories.keys.map do |category|
-                      [category.humanize, category]
-                    end,
-                    @recipe.category,
-                  ),
-                  { prompt: "Pick a Category" },
-                  { data: { controller: "select" } } %>
-    </label>
+        <%= form.select :category,
+                    options_for_select(
+                      Recipe.categories.keys.map do |category|
+                        [category.humanize, category]
+                      end,
+                      @recipe.category,
+                    ),
+                    { prompt: "Pick a Category" },
+                    { data: { controller: "select" } } %>
+      </label>
 
-    <%# New recipe forms should be simple - show other fields during edit %>
-    <% if is_editing %>
       <label class="form-control" for="instructions">
         <div class="label">
           <span class="label-text">Instructions</span>

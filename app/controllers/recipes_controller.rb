@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new(category: :lunch)
   end
 
   def edit
