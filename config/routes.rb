@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       get "by_category/:category", action: :by_category, as: :by_category
     end
 
+    member do
+      get :edit_name
+      patch :update_name
+    end
+
     resources :ingredients, only: %i[new create edit update destroy], module: :recipes
   end
 

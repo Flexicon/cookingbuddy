@@ -1,0 +1,23 @@
+<%= turbo_frame_tag dom_id(@recipe, :name) do %>
+  <div class="flex items-center gap-2">
+    <span><%= recipe.name %></span>
+
+    <%= link_to(
+      edit_name_recipe_path(recipe),
+      class: "btn btn-ghost btn-xs md:opacity-0 md:group-hover:opacity-100",
+      title: "Edit",
+    ) do %>
+      <%= lucide_icon("pencil", class: "h-4 w-4") %>
+    <% end %>
+    <%= button_to recipe,
+      class: "btn btn-ghost btn-xs md:opacity-0 md:group-hover:opacity-100",
+      method: :delete,
+      title: "Remove",
+      data: {
+        turbo_confirm: "Are you sure?",
+        turbo_frame: "_top",
+      } do %>
+      <%= lucide_icon("trash-2", class: "h-4 w-4") %>
+    <% end %>
+  </div>
+<% end %>

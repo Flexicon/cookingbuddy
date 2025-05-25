@@ -1,9 +1,10 @@
-
 en:
   recipes:
     create:
       success: "Added recipe for %{name}"
     update:
       success: "Updated recipe"
+    update_name:
+      success: "Updated recipe name to %{name}"
     destroy:
       success: "Recipe %{name} removed"

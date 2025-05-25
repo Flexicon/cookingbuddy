@@ -2,7 +2,7 @@
 
 class RecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :edit_name, :update, :update_name, :destroy]
 
   def index
     @recipes = Recipe.includes(:image_attachment).all
@@ -16,6 +16,9 @@ class RecipesController < ApplicationController
   end
 
   def edit
+  end
+
+  def edit_name
   end
 
   def create
@@ -46,6 +49,17 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update_name
+    if @recipe.update(name_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @recipe, notice: t(".success", name: @recipe.name) }
+      end
+    else
+      render :edit_name, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @recipe.destroy
     redirect_to recipes_path, notice: t(".success", name: @recipe.name)
@@ -69,5 +83,9 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.expect(recipe: [:name, :category, :image, :instructions])
+  end
+
+  def name_params
+    params.expect(recipe: [:name])
   end
 end

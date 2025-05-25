@@ -1,0 +1,7 @@
+<%= turbo_stream.replace(
+  dom_id(@recipe, :name),
+  partial: "recipes/name_header",
+  locals: {
+    recipe: @recipe,
+  },
+) %>

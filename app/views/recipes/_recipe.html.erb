@@ -12,26 +12,7 @@
   </figure>
   <div class="card-body">
     <h2 class="card-title group">
-      <span><%= @recipe.name %></span>
-
-      <%= link_to(
-        edit_recipe_path(@recipe),
-        class: "btn btn-ghost btn-xs md:opacity-0 md:group-hover:opacity-100",
-        title: "Edit",
-          data: { turbo_frame: "modal" },
-      ) do %>
-        <%= lucide_icon("pencil", class: "h-4 w-4") %>
-      <% end %>
-      <%= button_to @recipe,
-        class: "btn btn-ghost btn-xs md:opacity-0 md:group-hover:opacity-100",
-        method: :delete,
-        title: "Remove",
-        data: {
-          turbo_confirm: "Are you sure?",
-          turbo_frame: "_top",
-        } do %>
-        <%= lucide_icon("trash-2", class: "h-4 w-4") %>
-      <% end %>
+      <%= render "name_header", recipe: @recipe %>
     </h2>
     <div class="mb-4">
       <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
