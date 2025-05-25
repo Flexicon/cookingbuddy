@@ -4,6 +4,8 @@ inherit_mode:
 
 require:
   - standard
+
+plugins:
   - standard-custom
   - standard-performance
   - rubocop-performance
@@ -21,10 +23,10 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2
   Exclude:
-    - 'bin/**/*'
-    - 'db/schema.rb'
-    - 'vendor/**/*'
-    - 'vendor/bundle/**/*'
+    - "bin/**/*"
+    - "db/schema.rb"
+    - "vendor/**/*"
+    - "vendor/bundle/**/*"
 
 Style/FrozenStringLiteralComment:
   Enabled: true
