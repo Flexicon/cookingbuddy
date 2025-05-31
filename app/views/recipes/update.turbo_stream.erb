@@ -1,2 +1,2 @@
 <%= turbo_stream.update "modal" %>
-<%= turbo_stream.replace(:recipe, partial: "recipes/recipe") %>
+<%= turbo_stream.replace(:recipe, partial: "recipes/recipe", locals: { full: true }) %>

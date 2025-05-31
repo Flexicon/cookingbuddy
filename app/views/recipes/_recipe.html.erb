@@ -1,29 +1,33 @@
-<%= turbo_frame_tag :recipe, class: "card bg-base-100 shadow-xl" do %>
-  <%= turbo_stream.update :flash, partial: "shared/flashes" %>
+<% if local_assigns[:full] %>
+  <%= turbo_frame_tag :recipe, class: "card bg-base-100 shadow-xl" do %>
+    <%= turbo_stream.update :flash, partial: "shared/flashes" %>
 
-  <figure>
-    <%= image_tag @recipe.image_or_placeholder(
-      placeholder_options: {
-        width: 900,
-        height: 208,
-      },
-    ),
-    class: "h-52 bg-base-100 w-full object-cover" %>
-  </figure>
-  <div class="card-body">
-    <h2 class="card-title group">
-      <%= render "name_header", recipe: @recipe %>
-    </h2>
-    <div class="mb-4">
-      <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
+    <figure>
+      <%= image_tag recipe.image_or_placeholder(
+        placeholder_options: {
+          width: 900,
+          height: 208,
+        },
+      ),
+      class: "h-52 bg-base-100 w-full object-cover" %>
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title group">
+        <%= render "name_header", recipe: recipe %>
+      </h2>
+      <div class="mb-4">
+        <%= render RecipeCategoryComponent.new(category: recipe.category) %>
+      </div>
+
+      <%= render "ingredients", recipe: recipe %>
+
+      <% if recipe.instructions.present? %>
+        <hr class="my-3"/>
+        <h3 class="text-lg font-semibold">Instructions</h3>
+        <%= recipe.instructions %>
+      <% end %>
     </div>
-
-    <%= render "ingredients", recipe: @recipe %>
-
-    <% if @recipe.instructions.present? %>
-      <hr class="my-3"/>
-      <h3 class="text-lg font-semibold">Instructions</h3>
-      <%= @recipe.instructions %>
-    <% end %>
-  </div>
+  <% end %>
+<% else %>
+  <%= render RecipeListItemComponent.new(recipe: recipe) %>
 <% end %>
