@@ -1,9 +1,9 @@
 <%= form_with model: recipe, class: "w-full" do |form| %>
   <%= turbo_stream.update :flash, partial: "shared/flashes" %>
-  <% is_editing = @recipe.persisted? %>
+  <% is_editing = recipe.persisted? %>
 
   <div class="space-y-4 mb-6">
-    <%= render FormErrorsComponent.new(model: @recipe) %>
+    <%= render FormErrorsComponent.new(model: recipe) %>
 
     <label class="form-control">
       <div class="label">
@@ -19,7 +19,7 @@
 
     <%# New recipe forms should be simple - show other fields during edit and set default category %>
     <% unless is_editing %>
-      <%= form.hidden_field :category, value: @recipe.category %>
+      <%= form.hidden_field :category, value: recipe.category %>
     <% else %>
       <label class="form-control">
         <div class="label">
@@ -30,7 +30,7 @@
           :category,
           options_for_select(
             Recipe.categories.keys.map { |category| [category.humanize, category] },
-            @recipe.category,
+            recipe.category,
           ),
           { prompt: "Pick a Category" },
           { data: { controller: "select" } },
@@ -51,8 +51,8 @@
           <span class="label-text">Image</span>
         </div>
         <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
-        <% if @recipe.image.attached? %>
-          <%= image_tag @recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
+        <% if recipe.image.attached? %>
+          <%= image_tag recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
         <% end %>
       </label>
     <% end %>
