@@ -15,3 +15,6 @@ application.register("self-yeeter", SelfYeeterController)
 
 import SuggestedRecipesController from "./suggested_recipes_controller"
 application.register("suggested-recipes", SuggestedRecipesController)
+
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
