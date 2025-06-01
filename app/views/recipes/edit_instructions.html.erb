@@ -10,7 +10,7 @@
         <span>Save</span>
       </button>
 
-      <%= link_to @recipe, class: "btn btn-ghost btn-sm" do %>
+      <%= link_to recipe_path(@recipe, cancel_edit: true), class: "btn btn-ghost btn-sm" do %>
         <span>Never mind</span>
       <% end %>
     </div>
