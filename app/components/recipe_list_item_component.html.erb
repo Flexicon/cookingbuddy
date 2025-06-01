@@ -16,6 +16,8 @@
     data: {
       turbo_frame: "_top",
     } %>
-    <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
+    <% if @show_category %>
+      <%= render RecipeCategoryComponent.new(category: @recipe.category) %>
+    <% end %>
   </div>
 </div>

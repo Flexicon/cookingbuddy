@@ -2,5 +2,6 @@
   <%= render RecipeListComponent.new(
     recipes: @recipes,
     blank_message: "No recipes for #{@category} yet",
+    show_categories: false,
   ) %>
 <% end %>
