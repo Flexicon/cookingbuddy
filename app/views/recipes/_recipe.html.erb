@@ -16,7 +16,7 @@
         <%= render "name_header", recipe: recipe %>
       </h2>
       <div class="mb-4">
-        <%= render RecipeCategoryComponent.new(category: recipe.category) %>
+        <%= render "category", recipe: recipe %>
       </div>
 
       <%= render "ingredients", recipe: recipe %>

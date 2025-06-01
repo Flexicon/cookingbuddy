@@ -8,5 +8,7 @@ en:
       success: "Updated recipe name to %{name}"
     update_instructions:
       success: "Updated %{name} instructions"
+    update_category:
+      success: "Updated %{name} category to %{category}"
     destroy:
       success: "Recipe %{name} removed"

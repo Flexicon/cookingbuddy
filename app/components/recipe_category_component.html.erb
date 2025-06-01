@@ -1,1 +1,43 @@
-<span class="badge <%= @variant %> badge-sm"><%= @category.capitalize %></span>
+<% if editable? %>
+  <div class="dropdown">
+    <div
+      tabindex="0"
+      role="button"
+      class="
+        badge badge-sm cursor-pointer gap-1 <%= @variant %>
+      "
+    >
+      <%= @category.capitalize %>
+      <% if editable? %>
+        <%= lucide_icon("chevron-down", class: "h-3 w-3") %>
+      <% end %>
+    </div>
+
+    <ul
+      tabindex="0"
+      class="
+        dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow
+      "
+    >
+      <% @categories.each do |category_label, category_id| %>
+        <li>
+          <%= button_to(
+            category_label,
+            update_category_recipe_path(@recipe, category: category_id),
+            method: :patch,
+            # TODO: move this to global css for dropdowns - should be able to handle Rails form-buttons
+            form_class: "block p-0",
+            class: "px-4 py-2 w-full text-left",
+          ) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <span class="badge badge-sm <%= @variant %>">
+    <%= @category.capitalize %>
+    <% if editable? %>
+      <%= lucide_icon("chevron-down", class: "h-3 w-3") %>
+    <% end %>
+  </span>
+<% end %>
