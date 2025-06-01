@@ -1,0 +1,22 @@
+<%= turbo_frame_tag(
+  dom_id(recipe, :image),
+  class: "overflow-hidden rounded-start-inherit group",
+) do %>
+  <%= link_to(
+    edit_image_recipe_path(recipe),
+    class: "btn btn-secondary btn-square btn-outline btn-sm absolute top-3 right-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity",
+    data: { turbo_frame: :modal },
+  ) do %>
+    <%= lucide_icon("pencil", class: "h-4 w-4") %>
+  <% end %>
+
+  <figure>
+    <%= image_tag recipe.image_or_placeholder(
+      placeholder_options: {
+        width: 900,
+        height: 208,
+      },
+    ),
+    class: "h-52 bg-base-100 w-full object-cover" %>
+  </figure>
+<% end %>

@@ -101,4 +101,11 @@
   .ts-control .item {
     @apply text-base-content;
   }
+
+  .rounded-start-inherit {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+    border-end-start-radius: unset;
+    border-end-end-radius: unset;
+  }
 }

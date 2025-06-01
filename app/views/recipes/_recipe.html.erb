@@ -2,15 +2,8 @@
   <%= turbo_frame_tag :recipe, class: "card bg-base-100 shadow-xl" do %>
     <%= turbo_stream.update :flash, partial: "shared/flashes" %>
 
-    <figure>
-      <%= image_tag recipe.image_or_placeholder(
-        placeholder_options: {
-          width: 900,
-          height: 208,
-        },
-      ),
-      class: "h-52 bg-base-100 w-full object-cover" %>
-    </figure>
+    <%= render "image_header", recipe: recipe %>
+
     <div class="card-body">
       <h2 class="card-title group">
         <%= render "name_header", recipe: recipe %>

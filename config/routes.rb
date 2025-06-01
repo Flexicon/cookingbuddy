@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       get :edit_instructions
       patch :update_instructions
       patch :update_category
+      get :edit_image
+      patch :update_image
     end
 
     resources :ingredients, only: %i[new create edit update destroy], module: :recipes

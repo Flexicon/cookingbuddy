@@ -1,0 +1,31 @@
+<%= turbo_frame_tag :modal do %>
+  <dialog class="modal modal-bottom sm:modal-middle" data-controller="modals">
+    <div class="modal-box">
+      <h2 class="text-xl font-bold mb-1">Update Image</h2>
+      <p class="text-sm mb-2">
+        Set a new image for
+        <strong>
+          <%= @recipe.name %>
+        </strong>
+      </p>
+
+      <%= form_with model: @recipe, url: update_image_recipe_path(@recipe), class: "w-full" do |form| %>
+        <div class="space-y-4 mb-6">
+          <%= render FormErrorsComponent.new(model: @recipe) %>
+        </div>
+
+        <label class="form-control" for="recipe_image">
+          <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
+          <% if @recipe.image.attached? %>
+            <%= image_tag @recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
+          <% end %>
+        </label>
+
+        <div class="modal-action">
+          <%= form.submit "Save", class: "btn btn-primary" %>
+          <button class="btn" data-action="click->modals#close">Never mind</button>
+        </div>
+      <% end %>
+    </div>
+  </dialog>
+<% end %>

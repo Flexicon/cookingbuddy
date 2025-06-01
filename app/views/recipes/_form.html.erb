@@ -17,45 +17,7 @@
       ) %>
     </label>
 
-    <%# New recipe forms should be simple - show other fields during edit and set default category %>
-    <% unless is_editing %>
-      <%= form.hidden_field :category, value: recipe.category %>
-    <% else %>
-      <label class="form-control">
-        <div class="label">
-          <span class="label-text">Category</span>
-        </div>
-
-        <%= form.select(
-          :category,
-          options_for_select(
-            Recipe.categories.keys.map { |category| [category.humanize, category] },
-            recipe.category,
-          ),
-          { prompt: "Pick a Category" },
-          { data: { controller: "select" } },
-        ) %>
-      </label>
-
-      <label class="form-control" for="instructions">
-        <div class="label">
-          <span class="label-text">Instructions</span>
-        </div>
-      </label>
-      <div>
-        <%= form.rich_textarea :instructions %>
-      </div>
-
-      <label class="form-control">
-        <div class="label">
-          <span class="label-text">Image</span>
-        </div>
-        <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
-        <% if recipe.image.attached? %>
-          <%= image_tag recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
-        <% end %>
-      </label>
-    <% end %>
+    <%= form.hidden_field :category, value: recipe.category %>
   </div>
 
   <div class="modal-action">

@@ -1,0 +1,9 @@
+<%= turbo_stream.update :flash, partial: "shared/flashes" %>
+<%= turbo_stream.update "modal" %>
+<%= turbo_stream.replace(
+  dom_id(@recipe, :image),
+  partial: "recipes/image_header",
+  locals: {
+    recipe: @recipe,
+  },
+) %>
