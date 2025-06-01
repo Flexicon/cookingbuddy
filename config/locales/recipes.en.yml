@@ -6,5 +6,7 @@ en:
       success: "Updated recipe"
     update_name:
       success: "Updated recipe name to %{name}"
+    update_instructions:
+      success: "Updated %{name} instructions"
     destroy:
       success: "Recipe %{name} removed"

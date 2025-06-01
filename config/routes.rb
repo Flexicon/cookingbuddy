@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     member do
       get :edit_name
       patch :update_name
+      get :edit_instructions
+      patch :update_instructions
     end
 
     resources :ingredients, only: %i[new create edit update destroy], module: :recipes

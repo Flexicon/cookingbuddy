@@ -1,0 +1,8 @@
+<%= turbo_stream.update :flash, partial: "shared/flashes" %>
+<%= turbo_stream.replace(
+  dom_id(@recipe, :instructions),
+  partial: "recipes/instructions",
+  locals: {
+    recipe: @recipe,
+  },
+) %>

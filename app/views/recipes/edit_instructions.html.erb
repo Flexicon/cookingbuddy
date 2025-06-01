@@ -1,0 +1,18 @@
+<%= turbo_frame_tag dom_id(@recipe, :instructions) do %>
+  <%= form_with model: @recipe, url: update_instructions_recipe_path do |form| %>
+    <div class="recipe-instructions mb-2">
+      <%= form.rich_textarea :instructions %>
+    </div>
+
+    <div class="flex gap-1">
+      <button class="btn btn-sm btn-primary" type="submit" title="Save">
+        <%= lucide_icon("check", class: "h-4 w-4") %>
+        <span>Save</span>
+      </button>
+
+      <%= link_to @recipe, class: "btn btn-ghost btn-sm" do %>
+        <span>Never mind</span>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

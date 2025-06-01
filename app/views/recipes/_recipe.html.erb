@@ -21,11 +21,8 @@
 
       <%= render "ingredients", recipe: recipe %>
 
-      <% if recipe.instructions.present? %>
-        <hr class="my-3"/>
-        <h3 class="text-lg font-semibold">Instructions</h3>
-        <%= recipe.instructions %>
-      <% end %>
+      <hr class="my-3"/>
+      <%= render "instructions", recipe: recipe %>
     </div>
   <% end %>
 <% else %>
