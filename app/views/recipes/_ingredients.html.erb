@@ -1,12 +1,24 @@
 <%= turbo_frame_tag dom_id(@recipe, :ingredients) do %>
   <h3 class="font-semibold mb-2 flex items-center gap-2">
     <span>Ingredients</span>
-    <%= link_to new_recipe_ingredient_path(recipe),
+    <% unless recipe.ingredients.empty? %>
+      <%= link_to new_recipe_ingredient_path(recipe),
         class: "btn btn-ghost btn-xs",
         data: { turbo_frame: "modal" } do %>
-      <%= lucide_icon("circle-plus", class: "h-4 w-4") %>
+        <%= lucide_icon("circle-plus", class: "h-4 w-4") %>
+      <% end %>
     <% end %>
   </h3>
+  <% if recipe.ingredients.empty? %>
+    <div class="space-y-2">
+      <%= link_to new_recipe_ingredient_path(recipe),
+        class: "btn btn-sm btn-ghost mt-2",
+        data: { turbo_frame: "modal" } do %>
+        <%= lucide_icon("circle-plus", class: "h-4 w-4") %>
+        Add first ingredient
+      <% end %>
+    </div>
+  <% end %>
   <div class="flex flex-col gap-2 w-full max-w-sm">
     <% recipe.ingredients.each do |ingredient| %>
       <div class="flex items-center gap-2 group">
