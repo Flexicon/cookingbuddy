@@ -3,6 +3,6 @@
   dom_id(@recipe, :category),
   partial: "recipes/category",
   locals: {
-    recipe: @recipe,
+    recipe: @recipe.reload,
   },
 ) %>

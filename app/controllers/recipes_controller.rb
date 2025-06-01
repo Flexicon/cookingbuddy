@@ -85,7 +85,10 @@ class RecipesController < ApplicationController
         format.html { redirect_to @recipe, notice: t(".success", name: @recipe.name, category: @recipe.category) }
       end
     else
-      render :render, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { flash.now[:error] = @recipe.errors.full_messages.to_sentence }
+        format.html { render :render, status: :unprocessable_entity }
+      end
     end
   end
 
