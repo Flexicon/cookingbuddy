@@ -7,18 +7,17 @@
 
     <% @categories.each do |category_label, category_id| %>
       <% component.with_item do %>
-        <li>
-          <%= button_to(
+        <%= button_to(
             update_category_recipe_path(@recipe, category: category_id),
             method: :patch,
             # TODO: move this to global css for dropdowns - should be able to handle Rails form-buttons
             form_class: "block p-0",
             class: "flex items-center gap-1 p-2 w-full text-left",
+            disabled: @category == category_id,
           ) do %>
-            <%= render RecipeCategoryComponent.new(category: category_id) %>
-            <%= lucide_icon("check", class: "h-4 w-4") if @category == category_id %>
-          <% end %>
-        </li>
+          <%= render RecipeCategoryComponent.new(category: category_id) %>
+          <%= lucide_icon("check", class: "h-4 w-4") if @category == category_id %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
