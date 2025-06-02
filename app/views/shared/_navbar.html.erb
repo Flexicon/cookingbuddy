@@ -7,31 +7,31 @@
 
   <div class="flex items-center gap-3">
     <% if user_signed_in? %>
-      <div class="dropdown dropdown-end dropdown-hover">
-        <div tabindex="0" role="button" class="btn btn-sm btn-ghost">
+      <%= render DropdownComponent.new(trigger_class: "btn btn-sm btn-ghost", hover: true, align_end: true) do |component| %>
+        <% component.with_trigger do %>
           <%= lucide_icon("settings", class: "h-4 w-4") %>
-        </div>
+        <% end %>
 
-        <ul
-          tabindex="0"
-          class="
-            dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow
-          "
-        >
-          <li>
-            <%= link_to products_path do %>
-              <%= lucide_icon("package-search", class: "h-5 w-5") %>
-              <span>Manage Products</span>
-            <% end %>
-          </li>
-          <li>
-            <%= button_to destroy_user_session_path, class: 'flex items-center gap-2', method: :delete, title: 'Sign out' do %>
-              <%= lucide_icon("log-out", class: "h-5 w-5") %>
-              <span>Sign Out</span>
-            <% end %>
-          </li>
-        </ul>
-      </div>
+        <% component.with_item do %>
+          <%= link_to products_path do %>
+            <%= lucide_icon("package-search", class: "h-5 w-5") %>
+            <span>Manage Products</span>
+          <% end %>
+        <% end %>
+
+        <% component.with_item do %>
+          <%= button_to(
+            destroy_user_session_path,
+            method: :delete,
+            title: 'Sign out',
+            form_class: "block p-0",
+            class: "flex items-center gap-2 px-4 py-2 w-full text-left",
+          ) do %>
+            <%= lucide_icon("log-out", class: "h-5 w-5") %>
+            <span>Sign Out</span>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </nav>

@@ -1,4 +1,4 @@
-<div class="dropdown">
+<%= tag.div(class: @container_class) do %>
   <%= tag.div(class: @trigger_class, tabindex: "0", role: "button") do %>
     <%= trigger %>
   <% end %>
@@ -10,4 +10,4 @@
       </li>
     <% end %>
   <% end %>
-</div>
+<% end %>
