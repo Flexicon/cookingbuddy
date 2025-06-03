@@ -8,6 +8,7 @@
   <div class="flex items-center gap-3">
     <% if user_signed_in? %>
       <%= render DropdownComponent.new(trigger_class: "btn btn-sm btn-ghost", hover: true, align_end: true) do |component| %>
+
         <% component.with_trigger do %>
           <%= lucide_icon("settings", class: "h-4 w-4") %>
         <% end %>
@@ -30,6 +31,7 @@
             <span>Sign Out</span>
           <% end %>
         <% end %>
+
       <% end %>
     <% end %>
   </div>

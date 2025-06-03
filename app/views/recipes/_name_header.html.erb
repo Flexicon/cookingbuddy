@@ -8,22 +8,33 @@
     >
 
       <%= link_to(
-      edit_name_recipe_path(recipe),
+        edit_name_recipe_path(recipe),
         class: "cursor-text hover:underline decoration-dotted",
         title: "Edit",
       ) do %>
         <span><%= recipe.name %></span>
       <% end %>
 
-      <%= button_to recipe,
-      class: "btn btn-ghost btn-xs md:opacity-0 md:group-hover:opacity-100",
-      method: :delete,
-      title: "Remove",
-      data: {
-        turbo_confirm: "Are you sure?",
-        turbo_frame: "_top",
-      } do %>
-        <%= lucide_icon("trash-2", class: "h-4 w-4") %>
+      <%= render DropdownComponent.new(trigger_class: "btn btn-ghost btn-xs", align_end: true) do |component| %>
+
+        <% component.with_trigger do %>
+          <%= lucide_icon("more-horizontal", class: "h-4 w-4") %>
+        <% end %>
+
+        <% component.with_item do %>
+          <%= button_to(
+            recipe,
+            class: "gap-2",
+            method: :delete,
+            data: {
+              turbo_confirm: "Are you sure?",
+              turbo_frame: "_top",
+            }
+          ) do %>
+            <%= lucide_icon("trash-2", class: "h-4 w-4") %>
+            <span>Delete</span>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
 
