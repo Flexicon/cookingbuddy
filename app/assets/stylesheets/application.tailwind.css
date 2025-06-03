@@ -39,6 +39,14 @@
     @apply dark:placeholder-gray-500;
   }
 
+  /* Rails button_to Forms in Dropdowns */
+  .dropdown-content li form.button_to {
+    @apply block p-0;
+  }
+  .dropdown-content li form.button_to button {
+    @apply flex items-center w-full text-left px-4 py-2;
+  }
+
   /* Tom-Select */
   .ts-control {
     @apply select select-bordered text-base-content;
