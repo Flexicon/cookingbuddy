@@ -5,7 +5,7 @@ class DropdownComponent < ViewComponent::Base
   renders_many :items
 
   DEFAULT_TRIGGER_CLASS = "btn btn-ghost"
-  DEFAULT_MENU_CLASS = "menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+  DEFAULT_MENU_CLASS = "menu bg-base-100 dark:bg-base-200 border border-white/5 shadow-2xl outline outline-1 outline-black/5 rounded-box z-[1] w-52 p-2 shadow-lg"
 
   POSITIONS = %i[top bottom left right]
 
