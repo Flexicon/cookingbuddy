@@ -7,7 +7,7 @@ class DropdownComponent < ViewComponent::Base
   DEFAULT_TRIGGER_CLASS = "btn btn-ghost"
   DEFAULT_MENU_CLASS = "menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
 
-  POSITIONS = %w[top bottom left right]
+  POSITIONS = %i[top bottom left right]
 
   def initialize(
     container_class: nil,
@@ -16,16 +16,16 @@ class DropdownComponent < ViewComponent::Base
     item_class: nil,
     hover: false,
     align_end: false,
-    position: "bottom"
+    position: :bottom
   )
-    if POSITIONS.exclude?(position)
+    if POSITIONS.exclude?(position.to_sym)
       raise ArgumentError, "Invalid position: #{position}. Valid positions are: #{POSITIONS.join(", ")}"
     end
 
     @container_class = [
       container_class,
       "dropdown",
-      ("dropdown-" + position),
+      ("dropdown-" + position.to_s),
       ("dropdown-hover" if hover),
       ("dropdown-end" if align_end)
     ].flatten.compact.uniq
