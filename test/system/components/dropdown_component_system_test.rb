@@ -24,7 +24,7 @@ class DropdownComponentSystemTest < ApplicationSystemTestCase
     assert_no_text("Item 2")
     assert_no_text("Item 3")
 
-    find("[role=button]", text: "Dropdown Trigger - Hover").click
+    find("[role=button]", text: "Dropdown Trigger - Hover").hover
 
     assert_text("Item 1")
     assert_text("Item 2")
