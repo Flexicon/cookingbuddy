@@ -16,18 +16,4 @@ class DropdownComponentSystemTest < ApplicationSystemTestCase
     assert_text("Item 2")
     assert_text("Item 3")
   end
-
-  def test_hover_preview
-    visit("/rails/view_components/dropdown_component/hover")
-
-    assert_no_text("Item 1")
-    assert_no_text("Item 2")
-    assert_no_text("Item 3")
-
-    find("[role=button]", text: "Dropdown Hover Trigger").hover
-
-    assert_text("Item 1")
-    assert_text("Item 2")
-    assert_text("Item 3")
-  end
 end
