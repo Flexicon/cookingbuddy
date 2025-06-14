@@ -1,0 +1,7 @@
+# en.users.omniauth_callbacks.github.failure
+en:
+  users:
+    omniauth_callbacks:
+      github:
+        forbidden: "Access denied. This kitchen’s for authorized chefs only."
+        failure: "Bloody hell! Your authentication got burnt. Try again before the whole kitchen catches fire. 🔥"

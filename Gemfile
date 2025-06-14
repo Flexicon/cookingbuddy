@@ -71,6 +71,11 @@ end
 # Authentication [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.9"
 
+# Omniauth for third-party authentication [https://github.com/omniauth/omniauth]
+gem "omniauth"
+gem "omniauth-github"
+gem "omniauth-rails_csrf_protection"
+
 gem "view_component", "~> 3.23"
 
 # Use Active Storage with Minio (s3 compatible) for file uploads [https://guides.rubyonrails.org/active_storage_overview.html]
