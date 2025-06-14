@@ -7,10 +7,21 @@
 
   <div class="flex items-center gap-3">
     <% if user_signed_in? %>
-      <%= render DropdownComponent.new(trigger_class: "btn btn-sm btn-ghost", hover: true, align_end: true) do |component| %>
+      <%= render DropdownComponent.new(trigger_class: "flex avatar placeholder", align_end: true) do |component| %>
 
         <% component.with_trigger do %>
-          <%= lucide_icon("settings", class: "h-4 w-4") %>
+          <div
+            class="
+              w-10 rounded-full bg-neutral text-neutral-content ring-primary
+              ring-offset-base-100 ring-offset-2 hover:ring-1
+            "
+          >
+            <%- if current_user.image_url? %>
+              <img src="<%= current_user.image_url %>"/>
+            <%- else %>
+              <span><%= current_user.initials %></span>
+            <%- end %>
+          </div>
         <% end %>
 
         <% component.with_item do %>

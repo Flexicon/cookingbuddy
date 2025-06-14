@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def self.allowed_emails
     @allowed_emails ||= Rails.application.credentials.dig(:github, :allowed_emails) || []
   end
+
+  def initials
+    name.split.map { |n| n[0].upcase }.join if name.present?
+  end
 end
