@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REMOTE_HOST="nerfthis"
+CONTAINER_NAME="f04so8gg8c4w4gwkgsg80ggg"
+
+ssh -t "$REMOTE_HOST" "docker exec -ti \$(docker ps -q --filter "name=$CONTAINER_NAME") bin/rails console"
