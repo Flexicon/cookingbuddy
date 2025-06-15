@@ -15,7 +15,12 @@
         </div>
 
         <label class="form-control" for="recipe_image">
-          <%= form.file_field :image, class: "file-input file-input-bordered w-full" %>
+          <%= form.file_field(
+            :image,
+            class: "file-input file-input-bordered w-full",
+            accept: "image/*",
+            required: true,
+          ) %>
           <% if @recipe.image.attached? %>
             <%= image_tag @recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
           <% end %>

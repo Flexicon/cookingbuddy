@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [
     :show, :edit, :edit_instructions, :edit_name, :edit_image,
     :update, :update_category, :update_instructions, :update_name, :update_image,
-    :destroy
+    :destroy, :remove_image
   ]
 
   def index
@@ -103,6 +103,15 @@ class RecipesController < ApplicationController
       end
     else
       render :edit_name, status: :unprocessable_entity
+    end
+  end
+
+  def remove_image
+    @recipe.image.purge
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @recipe, notice: t(".success", name: @recipe.name) }
     end
   end
 

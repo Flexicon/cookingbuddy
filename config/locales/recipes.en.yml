@@ -10,5 +10,11 @@ en:
       success: "Updated %{name} instructions"
     update_category:
       success: "Updated %{name} category to %{category}"
+    update_image:
+      success: "Updated %{name} image"
+    delete_image:
+      success: "Removed %{name} image"
     destroy:
       success: "Recipe %{name} removed"
+    image:
+      remove_confirmation: "Remove the image for %{name}?"

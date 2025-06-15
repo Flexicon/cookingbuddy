@@ -2,13 +2,36 @@
   dom_id(recipe, :image),
   class: "overflow-hidden rounded-start-inherit group",
 ) do %>
-  <%= link_to(
-    edit_image_recipe_path(recipe),
-    class: "btn btn-secondary btn-square btn-outline btn-sm absolute top-3 right-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity",
-    data: { turbo_frame: :modal },
-  ) do %>
-    <%= lucide_icon("pencil", class: "h-4 w-4") %>
-  <% end %>
+  <div
+    class="
+      flex gap-2 absolute top-3 right-3 md:opacity-0 md:group-hover:opacity-100
+      transition-opacity
+    "
+  >
+    <% if @recipe.image.attached? %>
+      <%= button_to(
+        remove_image_recipe_path(@recipe),
+        class: "btn btn-error btn-square btn-outline btn-xs",
+        method: :delete,
+        data: {
+          turbo_confirm: t("recipes.image.remove_confirmation", name: @recipe.name),
+        }
+      ) do %>
+        <%= lucide_icon("image-minus", class: "h-4 w-4") %>
+      <% end %>
+    <% end %>
+
+    <%= link_to(
+      edit_image_recipe_path(recipe),
+      class: "btn btn-secondary btn-square btn-outline btn-xs",
+      data: { turbo_frame: :modal },
+    ) do %>
+      <%= lucide_icon(
+        recipe.image.attached? ? "image-up" : "image-plus",
+        class: "h-4 w-4",
+      ) %>
+    <% end %>
+  </div>
 
   <figure>
     <%= image_tag recipe.image_or_placeholder(
