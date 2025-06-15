@@ -14,10 +14,27 @@
           class: "btn w-full",
           data: {
             turbo: false,
+            controller: "ui-loading",
+            action: "ui-loading#showLoading",
+            ui_loading_target: "button",
           },
         ) do %>
-          <%= lucide_icon "github", class: "w-6 h-6" %>
-          <span>Cookin' with GitHub</span>
+          <%= lucide_icon "github", class: "w-6 h-6", data: { ui_loading_target: "hideable" } %>
+          <span data-ui-loading-target="hideable">Cookin' with GitHub</span>
+
+          <span
+            class="loading loading-spinner hidden"
+            data-ui-loading-target="indicator"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="hidden"
+            data-ui-loading-target="indicator"
+            role="status"
+            aria-hidden="true"
+          >
+            Frying up your session...
+          </span>
         <% end %>
       </div>
     </div>

@@ -18,3 +18,6 @@ application.register("suggested-recipes", SuggestedRecipesController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
+
+import UiLoadingController from "./ui_loading_controller"
+application.register("ui-loading", UiLoadingController)
