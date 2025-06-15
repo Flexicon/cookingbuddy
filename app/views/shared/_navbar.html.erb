@@ -25,6 +25,22 @@
         <% end %>
 
         <% component.with_item do %>
+          <div class="menu-title w-full flex flex-col">
+            <span>
+              Hi,
+              <%= current_user.first_name %>!
+            </span>
+
+            <small
+              class="w-full text-ellipsis overflow-hidden whitespace-nowrap"
+              title="<%= current_user.email %>"
+            >
+              <%= current_user.email %>
+            </small>
+          </div>
+        <% end %>
+
+        <% component.with_item do %>
           <%= link_to products_path do %>
             <%= lucide_icon("package-search", class: "h-5 w-5") %>
             <span>Manage Products</span>

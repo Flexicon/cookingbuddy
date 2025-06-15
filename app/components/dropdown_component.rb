@@ -5,7 +5,10 @@ class DropdownComponent < ViewComponent::Base
   renders_many :items
 
   DEFAULT_TRIGGER_CLASS = "btn btn-ghost"
-  DEFAULT_MENU_CLASS = "menu bg-base-100 dark:bg-base-200 border border-white/5 shadow-2xl outline outline-1 outline-black/5 rounded-box z-[1] w-52 p-2 shadow-lg"
+  DEFAULT_MENU_CLASS = [
+    "menu bg-base-100 dark:bg-base-200 border border-white/5 shadow-2xl outline outline-1 outline-black/5",
+    "rounded-box z-[1] min-w-52 max-w-64 p-2 shadow-lg"
+  ]
 
   POSITIONS = %i[top bottom left right]
 
@@ -32,6 +35,6 @@ class DropdownComponent < ViewComponent::Base
 
     @trigger_class = trigger_class
     @menu_class = [menu_class, "dropdown-content"].flatten.compact.uniq
-    @item_class = item_class
+    @item_class = [item_class, "w-full"].flatten.compact.uniq
   end
 end

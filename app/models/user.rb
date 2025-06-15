@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def initials
     name.split.map { |n| n[0].upcase }.join if name.present?
   end
+
+  def first_name
+    name.split.first if name.present?
+  end
 end
