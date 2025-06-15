@@ -1,23 +1,23 @@
 <div class="hero">
-  <div class="hero-content flex-col lg:flex-row-reverse lg:justify-end lg:gap-12">
-    <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Sign in now</h1>
-      <p class="py-6">
-        Start reaping the benefits of your own personal CookingBuddy. Track
-        recipes, plan your meals, and more.
-      </p>
-    </div>
-    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <div class="card-body">
+  <div class="hero-content flex-col">
+    <div class="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
+      <div class="card-body flex flex-col items-center">
+        <h2 class="card-title font-bold text-2xl block">Sign in now!</h2>
+
+        <p class="mb-6 text-center">
+          One login away from culinary greatness.
+        </p>
+
         <%= button_to(
           omniauth_authorize_path(resource_name, :github),
-          class: "btn",
+          form_class: "w-full",
+          class: "btn w-full",
           data: {
             turbo: false,
           },
         ) do %>
           <%= lucide_icon "github", class: "w-6 h-6" %>
-          <span>Sign in with GitHub</span>
+          <span>Cookin' with GitHub</span>
         <% end %>
       </div>
     </div>
