@@ -7,13 +7,15 @@
     >
       <% case type %>
       <% when "notice" %>
-        <%= lucide_icon("circle-alert", class: "h-6 w-6") %>
+        <%= lucide_icon("info", class: "h-6 w-6 text-info") %>
       <% when "alert" %>
         <%= lucide_icon("triangle-alert", class: "h-6 w-6") %>
       <% when "error" %>
         <%= lucide_icon("circle-x", class: "h-6 w-6") %>
       <% when "success" %>
         <%= lucide_icon("circle-check", class: "h-6 w-6") %>
+      <% when "info" %>
+        <%= lucide_icon("info", class: "h-6 w-6") %>
       <% end %>
 
       <span><%= msg %></span>
