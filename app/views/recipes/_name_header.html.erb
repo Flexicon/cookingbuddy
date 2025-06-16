@@ -15,7 +15,7 @@
         <span><%= recipe.name %></span>
       <% end %>
 
-      <%= render DropdownComponent.new(trigger_class: "btn btn-ghost btn-xs", align_end: true) do |component| %>
+      <%= render DropdownComponent.new(trigger_class: "btn btn-ghost btn-xs") do |component| %>
 
         <% component.with_trigger do %>
           <%= lucide_icon("more-horizontal", class: "h-4 w-4") %>
