@@ -7,7 +7,7 @@ class DropdownComponent < ViewComponent::Base
   DEFAULT_TRIGGER_CLASS = "btn btn-ghost"
   DEFAULT_MENU_CLASS = [
     "menu bg-base-100 dark:bg-base-200 border border-white/5 shadow-2xl outline outline-1 outline-black/5",
-    "rounded-box z-[1] min-w-52 max-w-64 p-2 shadow-lg"
+    "rounded-box z-1 min-w-52 max-w-64 p-2 shadow-lg"
   ]
 
   POSITIONS = %i[top bottom left right]
