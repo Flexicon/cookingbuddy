@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
 
-Things you may want to cover:
+- Ruby `3.3.5`
+- Rails `8.0.2`
 
-* Ruby version
+## System dependencies
 
-* System dependencies
+- Bun `>= 1.2.x`
+- SQLite3 `>= 3.43.x`
 
-* Configuration
+## Setup
 
-* Database creation
+```bash
+bin/setup
+```
 
-* Database initialization
+## Running the app
 
-* How to run the test suite
+```bash
+bin/dev
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running tests
 
-* Deployment instructions
+```bash
+bin/rails test
+```
 
-* ...
+Or including integration tests:
+
+```bash
+bin/rails test:all
+```
+
+## TODO
+
+- [ ] TailwindCSS and DaisyUI migration
+  - [ ] fix tom-select css in forms
+  - [ ] fix alerts backgrounds and colors
+  - [ ] fix missing cursor pointers on dropdown items and triggers
