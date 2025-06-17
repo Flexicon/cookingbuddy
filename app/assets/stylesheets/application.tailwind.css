@@ -1,4 +1,5 @@
 @import "./actiontext.css" layer(base);
+@import "tom-select/dist/css/tom-select.css" layer(base);
 
 @import "tailwindcss";
 
