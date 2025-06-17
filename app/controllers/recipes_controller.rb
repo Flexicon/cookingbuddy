@@ -90,7 +90,7 @@ class RecipesController < ApplicationController
     else
       respond_to do |format|
         format.turbo_stream { flash.now[:error] = @recipe.errors.full_messages.to_sentence }
-        format.html { render :render, status: :unprocessable_entity }
+        format.html { render :show, status: :unprocessable_entity }
       end
     end
   end
@@ -102,7 +102,7 @@ class RecipesController < ApplicationController
         format.html { redirect_to @recipe, notice: t(".success", name: @recipe.name) }
       end
     else
-      render :edit_name, status: :unprocessable_entity
+      render :edit_image, status: :unprocessable_entity
     end
   end
 
