@@ -1,5 +1,5 @@
 <div class="flex items-center gap-4">
-  <%= link_to recipe_path(@recipe), data: { turbo_frame: "_top" } do %>
+  <%= link_to recipe_path(@recipe), class: "shrink-0", data: { turbo_frame: "_top" } do %>
     <%= image_tag @recipe.image_or_placeholder(
       variant: :thumb,
       placeholder_options: {
@@ -9,10 +9,11 @@
     ),
     class: "h-14 w-14 shrink-0 object-cover rounded-full bg-gray-300" %>
   <% end %>
-  <div class="flex flex-col gap-1">
+  <div class="flex flex-col min-w-0 gap-1">
     <%= link_to @recipe.name,
     recipe_path(@recipe),
-    class: "link link-hover",
+    class: "link link-hover truncate",
+    title: @recipe.name,
     data: {
       turbo_frame: "_top",
     } %>

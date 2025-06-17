@@ -1,6 +1,6 @@
 <div class="recipes-list flex flex-col sm:flex-row sm:flex-wrap gap-4">
   <% @recipes.each do |recipe| %>
-    <div class="sm:basis-60">
+    <div class="sm:basis-60 overflow-hidden">
       <%= render RecipeListItemComponent.new(
         recipe: recipe,
         show_category: @show_categories,
