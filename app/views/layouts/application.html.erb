@@ -25,10 +25,9 @@
     <main class="container mx-auto pt-5 px-5">
       <div class="p-6">
         <%= render "shared/navbar" %>
-        <div id="flash">
-          <%= render "shared/flashes" %>
-        </div>
         <%= yield %>
+
+        <%= render "shared/flashes" %>
       </div>
 
       <%= turbo_frame_tag :modal %>
