@@ -21,12 +21,7 @@
       <div class="label">
         <span class="label-text">Amount</span>
       </div>
-      <%= form.number_field(
-        :amount,
-        class: "input input-bordered w-full",
-        placeholder: "10",
-        min: 1,
-      ) %>
+      <%= form.number_field(:amount, class: "input", placeholder: "10", min: 1) %>
     </label>
 
     <label class="form-control">
