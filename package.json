@@ -16,6 +16,7 @@
     "trix": "^2.1.12"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.10",
     "daisyui": "^5.0.43"
   }
 }
