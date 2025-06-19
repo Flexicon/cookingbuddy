@@ -5,9 +5,7 @@
 
   <%= tag.ul(class: @menu_class, tabindex: "0") do %>
     <% items.each do |item| %>
-      <%= tag.li(class: @item_class) do %>
-        <%= item %>
-      <% end %>
+      <%= item %>
     <% end %>
   <% end %>
 <% end %>

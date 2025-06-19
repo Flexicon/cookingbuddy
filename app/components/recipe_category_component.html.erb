@@ -7,15 +7,17 @@
     <% end %>
 
     <% @categories.each do |category_label, category_id| %>
-      <% component.with_item do %>
+      <% component.with_item(class: ("menu-disabled" if @category == category_id)) do %>
         <%= button_to(
           update_category_recipe_path(@recipe, category: category_id),
           method: :patch,
-          class: ["gap-1", ("cursor-not-allowed" if @category == category_id)],
+          class: "cursor-pointer gap-1",
           disabled: @category == category_id,
         ) do %>
           <%= render RecipeCategoryComponent.new(category: category_id) %>
-          <%= lucide_icon("check", class: "h-4 w-4") if @category == category_id %>
+          <% if @category == category_id %>
+            <%= lucide_icon("check", class: "h-4 w-4 text-base-content") %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>

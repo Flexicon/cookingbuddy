@@ -7,7 +7,7 @@
 
   <div class="flex items-center gap-3">
     <% if user_signed_in? %>
-      <%= render DropdownComponent.new(trigger_class: "flex mb-1 avatar placeholder", align_end: true) do |component| %>
+      <%= render DropdownComponent.new(trigger_class: "flex mb-1 cursor-pointer avatar placeholder", align_end: true) do |component| %>
 
         <% component.with_trigger do %>
           <div
@@ -52,7 +52,7 @@
             destroy_user_session_path,
             method: :delete,
             title: 'Sign out',
-            class: "gap-2",
+            class: "gap-2 cursor-pointer",
           ) do %>
             <%= lucide_icon("log-out", class: "h-5 w-5") %>
             <span>Sign Out</span>

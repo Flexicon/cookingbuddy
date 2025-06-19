@@ -2,7 +2,7 @@
 
 class DropdownComponent < ViewComponent::Base
   renders_one :trigger
-  renders_many :items
+  renders_many :items, "MenuItemComponent"
 
   DEFAULT_TRIGGER_CLASS = "btn btn-ghost"
   DEFAULT_MENU_CLASS = [
@@ -16,7 +16,6 @@ class DropdownComponent < ViewComponent::Base
     container_class: nil,
     trigger_class: DEFAULT_TRIGGER_CLASS,
     menu_class: DEFAULT_MENU_CLASS,
-    item_class: nil,
     hover: false,
     align_end: false,
     position: :bottom
@@ -35,6 +34,15 @@ class DropdownComponent < ViewComponent::Base
 
     @trigger_class = trigger_class
     @menu_class = [menu_class, "dropdown-content"].flatten.compact.uniq
-    @item_class = [item_class, "w-full"].flatten.compact.uniq
+  end
+
+  class MenuItemComponent < ViewComponent::Base
+    def initialize(class: [])
+      @class = binding.local_variable_get(:class)
+    end
+
+    def call
+      content_tag :li, content, {class: @class}
+    end
   end
 end

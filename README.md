@@ -39,4 +39,4 @@ bin/rails test:all
 - [ ] TailwindCSS and DaisyUI migration
   - [ ] fix tom-select css in forms
   - [ ] fix alerts backgrounds and colors
-  - [ ] fix missing cursor pointers on dropdown items and triggers
+  - [x] fix missing cursor pointers on dropdown items and triggers
