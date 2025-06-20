@@ -1,7 +1,7 @@
 <% if editable? %>
-  <%= render DropdownComponent.new(trigger_class: ["badge badge-sm cursor-pointer gap-1", @variant]) do |component| %>
+  <%= render DropdownComponent.new do |component| %>
 
-    <% component.with_trigger do %>
+    <% component.with_trigger(class: ["badge badge-sm cursor-pointer gap-1", @variant]) do %>
       <%= @category.capitalize %>
       <%= lucide_icon("chevron-down", class: "h-3 w-3") %>
     <% end %>
@@ -11,7 +11,7 @@
         <%= button_to(
           update_category_recipe_path(@recipe, category: category_id),
           method: :patch,
-          class: "cursor-pointer gap-1",
+          class: "gap-1",
           disabled: @category == category_id,
         ) do %>
           <%= render RecipeCategoryComponent.new(category: category_id) %>

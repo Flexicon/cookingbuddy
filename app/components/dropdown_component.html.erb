@@ -1,7 +1,5 @@
 <%= tag.div(class: @container_class) do %>
-  <%= tag.div(class: @trigger_class, tabindex: "0", role: "button") do %>
-    <%= trigger %>
-  <% end %>
+  <%= trigger %>
 
   <%= tag.ul(class: @menu_class, tabindex: "0") do %>
     <% items.each do |item| %>

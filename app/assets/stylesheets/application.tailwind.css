@@ -66,17 +66,7 @@
     @apply block p-0;
   }
   & li form.button_to button {
-    @apply flex items-center w-full text-left px-4 py-2;
-  }
-}
-
-@utility button_to {
-  /* Rails button_to Forms in Dropdowns */
-  .dropdown-content li &form {
-    @apply block p-0;
-  }
-  .dropdown-content li &form button {
-    @apply flex items-center w-full text-left px-4 py-2;
+    @apply flex items-center w-full cursor-pointer text-left px-4 py-2;
   }
 }
 

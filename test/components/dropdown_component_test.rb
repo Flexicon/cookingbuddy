@@ -21,10 +21,9 @@ class DropdownComponentTest < ViewComponent::TestCase
   def test_component_with_custom_classes
     render_inline(DropdownComponent.new(
       container_class: "custom-container",
-      trigger_class: "custom-trigger",
       menu_class: "custom-menu"
     )) do |c|
-      c.with_trigger { "Custom Trigger" }
+      c.with_trigger(class: "custom-trigger") { "Custom Trigger" }
       c.with_item(class: "custom-item") { "Custom Item 1" }
       c.with_item(class: "custom-item") { "Custom Item 2" }
     end
