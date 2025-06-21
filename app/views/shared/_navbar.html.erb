@@ -7,9 +7,9 @@
 
   <div class="flex items-center gap-3">
     <% if user_signed_in? %>
-      <%= render DropdownComponent.new(trigger_class: "flex mb-1 avatar placeholder", align_end: true) do |component| %>
+      <%= render DropdownComponent.new(align_end: true) do |component| %>
 
-        <% component.with_trigger do %>
+        <% component.with_trigger(class: "flex mb-1 cursor-pointer avatar placeholder") do %>
           <div
             class="
               w-10 rounded-full bg-neutral text-neutral-content ring-primary
