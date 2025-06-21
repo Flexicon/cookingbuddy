@@ -5,18 +5,6 @@
 
 @plugin "daisyui";
 
-@utility alert-alert {
-  @apply alert-warning;
-}
-
-@utility alert-notice {
-  @apply bg-base-100;
-}
-
-@utility btn-alert {
-  @apply btn-warning;
-}
-
 @utility field_with_errors {
   /* Forms */
   & input {

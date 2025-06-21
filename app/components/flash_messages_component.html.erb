@@ -1,0 +1,34 @@
+<div
+  class="flash-messages toast toast-top toast-center sm:min-w-xs"
+  data-turbo-temporary
+>
+  <% @flash.each do |type, msg, alert_type, btn_type| %>
+    <div
+      role="alert"
+      class="alert <%= alert_type %> shadow"
+      data-controller="self-yeeter"
+    >
+      <% case type %>
+      <% when "notice" %>
+        <%= lucide_icon("info", class: "h-6 w-6 text-info") %>
+      <% when "alert" %>
+        <%= lucide_icon("triangle-alert", class: "h-6 w-6") %>
+      <% when "error" %>
+        <%= lucide_icon("circle-x", class: "h-6 w-6") %>
+      <% when "success" %>
+        <%= lucide_icon("circle-check", class: "h-6 w-6") %>
+      <% when "info" %>
+        <%= lucide_icon("info", class: "h-6 w-6") %>
+      <% end %>
+
+      <span><%= msg %></span>
+
+      <button
+        class="btn btn-sm <%= btn_type %>"
+        data-action="click->self-yeeter#yeet"
+      >
+        <%= t("flash.alert.ack_button") %>
+      </button>
+    </div>
+  <% end %>
+</div>
