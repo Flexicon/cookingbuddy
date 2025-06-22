@@ -5,17 +5,13 @@
     <%= render FormErrorsComponent.new(model: @product) %>
 
     <fieldset class="fieldset">
-      <label class="label" for="name">
-        <span>Name</span>
-      </label>
+      <%= form.label :name, "Name", class: "label" %>
 
       <%= form.text_field :name, class: "input", placeholder: "Tomato", autofocus: true %>
     </fieldset>
 
     <fieldset class="fieldset">
-      <label class="label" for="category">
-        <span>Category</span>
-      </label>
+      <%= form.label :category, "Category", class: "label" %>
 
       <%= form.select(
         :category,

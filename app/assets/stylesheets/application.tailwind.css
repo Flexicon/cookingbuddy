@@ -5,7 +5,21 @@
 
 @plugin "daisyui";
 
-@utility field_with_errors {
+.input {
+  @apply dark:placeholder-gray-500;
+}
+
+.dropdown-content {
+  /* Rails button_to Forms in Dropdowns */
+  & li form.button_to {
+    @apply block p-0;
+  }
+  & li form.button_to button {
+    @apply flex items-center w-full cursor-pointer text-left px-4 py-2;
+  }
+}
+
+.field_with_errors {
   /* Forms */
   & input {
     @apply input-error;
@@ -20,17 +34,18 @@
   }
 }
 
-@utility ts-control {
+/* Tom-Select */
+.ts-control {
+  @apply select text-base-content;
+
   .field_with_errors & {
     @apply select-error;
   }
 
-  /* Tom-Select */
-  @apply select text-base-content;
-
   & input {
     @apply text-base-content;
   }
+
   .ts-wrapper.multi & > div {
     @apply p-0 m-0 pl-1;
   }
@@ -39,33 +54,23 @@
     @apply bg-base-100!;
   }
 
+  .ts-wrapper.w-full & {
+    @apply w-full;
+  }
+
   & .item {
     @apply text-base-content;
   }
 }
 
-@utility input {
-  @apply dark:placeholder-gray-500;
-}
-
-@utility dropdown-content {
-  /* Rails button_to Forms in Dropdowns */
-  & li form.button_to {
-    @apply block p-0;
-  }
-  & li form.button_to button {
-    @apply flex items-center w-full cursor-pointer text-left px-4 py-2;
-  }
-}
-
-@utility ts-dropdown-content {
+.ts-dropdown-content {
   &:focus {
     @apply shadow-xl;
   }
   @apply bg-base-200 text-base-content rounded-[5px];
 }
 
-@utility ts-wrapper {
+.ts-wrapper {
   &.plugin-remove_button .item {
     @apply rounded-md;
   }
@@ -90,7 +95,7 @@
   }
 }
 
-@utility plugin-remove_button {
+.plugin-remove_button {
   &.ts-wrapper .item {
     @apply rounded-md;
   }
@@ -100,7 +105,7 @@
   }
 }
 
-@utility item {
+.item {
   .ts-wrapper.plugin-remove_button & {
     @apply rounded-md;
   }
@@ -114,19 +119,19 @@
   }
 }
 
-@utility multi {
+.multi {
   &.ts-wrapper .ts-control > div {
     @apply p-0 m-0 pl-1;
   }
 }
 
-@utility remove {
+.remove {
   .ts-wrapper.plugin-remove_button .item & {
     @apply border-none text-lg leading-none py-1 rounded-r-lg;
   }
 }
 
-@utility ts-dropdown {
+.ts-dropdown {
   @apply rounded-md border border-solid border-t border-gray-300 dark:border-gray-600 shadow-xl;
 
   & [data-selectable].option:first-child {
@@ -154,7 +159,7 @@
   }
 }
 
-@utility option {
+.option {
   .ts-dropdown &[data-selectable]:first-child {
     @apply rounded-t-sm;
   }
@@ -176,31 +181,31 @@
   }
 }
 
-@utility create {
+.create {
   .ts-dropdown &:hover {
     @apply bg-primary text-primary-content;
   }
 }
 
-@utility active {
+.active {
   .ts-dropdown & {
     @apply bg-primary text-primary-content;
   }
 }
 
-@utility title {
+.title {
   .ts-wrapper .option & {
     display: block;
   }
 }
 
-@utility url {
+.url {
   .ts-wrapper .option & {
     @apply block text-base-content text-sm;
   }
 }
 
-@utility single {
+.single {
   &.ts-wrapper .ts-control {
     @apply bg-base-100!;
   }
@@ -209,6 +214,7 @@
     @apply bg-base-100!;
   }
 }
+/* End Tom-Select */
 
 @utility rounded-start-inherit {
   border-start-start-radius: inherit;

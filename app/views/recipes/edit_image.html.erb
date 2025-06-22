@@ -15,9 +15,7 @@
         </div>
 
         <fieldset class="fieldset">
-          <label class="label sr-only" for="image">
-            <span>Image</span>
-          </label>
+          <%= form.label :image, "Image", class: "label sr-only" %>
 
           <%= form.file_field(
             :image,

@@ -6,9 +6,7 @@
     <%= render FormErrorsComponent.new(model: recipe) %>
 
     <fieldset class="fieldset">
-      <label class="label" for="name">
-        <span>Name</span>
-      </label>
+      <%= form.label :name, "Name", class: "label" %>
 
       <%= form.text_field(
         :name,

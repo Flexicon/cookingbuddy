@@ -3,9 +3,7 @@
     <%= render FormErrorsComponent.new(model: @ingredient) %>
 
     <fieldset class="fieldset">
-      <label class="label" for="product_id">
-        <span>Product</span>
-      </label>
+      <%= form.label :product_id, "Product", class: "label" %>
 
       <%= form.collection_select(
         :product_id,
@@ -13,28 +11,24 @@
         :id,
         :name,
         { include_blank: "Pick a Product" },
-        { data: { controller: "select" } },
+        { class: "w-full", data: { controller: "select" } },
       ) %>
     </fieldset>
 
     <fieldset class="fieldset">
-      <label class="label" for="amount">
-        <span>Amount</span>
-      </label>
+      <%= form.label :amount, "Amount", class: "label" %>
 
-      <%= form.number_field(:amount, class: "input", placeholder: "10", min: 1) %>
+      <%= form.number_field(:amount, class: "input w-full", placeholder: "10", min: 1) %>
     </fieldset>
 
     <fieldset class="fieldset">
-      <label class="label" for="unit">
-        <span>Unit</span>
-      </label>
+      <%= form.label :unit, "Unit", class: "label" %>
 
       <%= form.select(
         :unit,
         options_for_select(Ingredient.units.keys, @ingredient.unit || "g"),
         { include_blank: "Pick a unit" },
-        { data: { controller: "select" } },
+        { class: "w-full", data: { controller: "select" } },
       ) %>
     </fieldset>
   </div>
