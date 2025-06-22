@@ -1,5 +1,8 @@
-
 en:
+  helpers:
+    submit:
+      product:
+        create: "Add Product"
   products:
     create:
       success: "Added product: %{name}"

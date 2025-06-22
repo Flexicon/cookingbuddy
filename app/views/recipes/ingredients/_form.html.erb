@@ -1,11 +1,9 @@
 <%= form_with model: [@recipe, @ingredient], class: "w-full" do |form| %>
-  <div class="space-y-4 mb-6">
+  <div class="space-y-2">
     <%= render FormErrorsComponent.new(model: @ingredient) %>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Product</span>
-      </div>
+    <fieldset class="fieldset">
+      <%= form.label :product_id, "Product", class: "label" %>
 
       <%= form.collection_select(
         :product_id,
@@ -13,34 +11,26 @@
         :id,
         :name,
         { include_blank: "Pick a Product" },
-        { data: { controller: "select" } },
+        { class: "w-full", data: { controller: "select" } },
       ) %>
-    </label>
+    </fieldset>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Amount</span>
-      </div>
-      <%= form.number_field(
-        :amount,
-        class: "input input-bordered w-full",
-        placeholder: "10",
-        min: 1,
-      ) %>
-    </label>
+    <fieldset class="fieldset">
+      <%= form.label :amount, "Amount", class: "label" %>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Unit</span>
-      </div>
+      <%= form.number_field(:amount, class: "input w-full", placeholder: "10", min: 1) %>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <%= form.label :unit, "Unit", class: "label" %>
 
       <%= form.select(
         :unit,
         options_for_select(Ingredient.units.keys, @ingredient.unit || "g"),
         { include_blank: "Pick a unit" },
-        { data: { controller: "select" } },
+        { class: "w-full", data: { controller: "select" } },
       ) %>
-    </label>
+    </fieldset>
   </div>
 
   <div class="modal-action">

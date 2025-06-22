@@ -15,9 +15,9 @@
         <span><%= recipe.name %></span>
       <% end %>
 
-      <%= render DropdownComponent.new(trigger_class: "btn btn-ghost btn-xs") do |component| %>
+      <%= render DropdownComponent.new do |component| %>
 
-        <% component.with_trigger do %>
+        <% component.with_trigger(class: "btn btn-ghost btn-xs") do %>
           <%= lucide_icon("more-horizontal", class: "h-4 w-4") %>
         <% end %>
 
@@ -47,7 +47,7 @@
       ) do |form| %>
         <%= form.text_field(
           :name,
-          class: "input input-sm input-bordered w-full",
+          class: "input input-sm",
           placeholder: "Tomato Soup",
           autofocus: true,
         ) %>

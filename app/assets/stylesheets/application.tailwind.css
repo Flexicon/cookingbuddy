@@ -1,119 +1,248 @@
-@import "actiontext.css";
-@import "tom-select/dist/css/tom-select";
+@import "./actiontext.css" layer(base);
+@import "tom-select/dist/css/tom-select.css" layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  @apply bg-base-200 dark:bg-base-300 min-h-lvh;
+@plugin "daisyui";
+
+.input {
+  @apply dark:placeholder-gray-500;
 }
 
-@layer components {
-  .alert-alert {
-    @apply alert-warning;
+.dropdown-content {
+  /* Rails button_to Forms in Dropdowns */
+  & li form.button_to {
+    @apply block p-0;
   }
-
-  .alert-notice {
-    @apply bg-base-100;
+  & li form.button_to button {
+    @apply flex items-center w-full cursor-pointer text-left px-4 py-2;
   }
+}
 
-  .btn-alert {
-    @apply btn-warning;
-  }
-
+.field_with_errors {
   /* Forms */
-  .field_with_errors input {
+  & input {
     @apply input-error;
   }
 
-  .field_with_errors select {
+  & select {
     @apply select-error;
   }
 
-  .field_with_errors .ts-control {
+  & .ts-control {
+    @apply select-error;
+  }
+}
+
+/* Tom-Select */
+.ts-control {
+  @apply select text-base-content;
+
+  .field_with_errors & {
     @apply select-error;
   }
 
-  .input {
-    @apply dark:placeholder-gray-500;
-  }
-
-  /* Rails button_to Forms in Dropdowns */
-  .dropdown-content li form.button_to {
-    @apply block p-0;
-  }
-  .dropdown-content li form.button_to button {
-    @apply flex items-center w-full text-left px-4 py-2;
-  }
-
-  /* Tom-Select */
-  .ts-control {
-    @apply select select-bordered text-base-content;
-  }
-
-  .ts-control input {
+  & input {
     @apply text-base-content;
   }
 
-  .ts-dropdown-content:focus {
-    @apply shadow-xl;
-  }
-
-  .ts-wrapper.plugin-remove_button .item {
-    @apply rounded-md;
-  }
-  .ts-wrapper.multi .ts-control > div {
+  .ts-wrapper.multi & > div {
     @apply p-0 m-0 pl-1;
   }
 
-  .ts-wrapper.plugin-remove_button .item .remove {
+  .ts-wrapper.single & {
+    @apply bg-base-100!;
+  }
+
+  .ts-wrapper.w-full & {
+    @apply w-full;
+  }
+
+  & .item {
+    @apply text-base-content;
+  }
+}
+
+.ts-dropdown-content {
+  &:focus {
+    @apply shadow-xl;
+  }
+  @apply bg-base-200 text-base-content rounded-[5px];
+}
+
+.ts-wrapper {
+  &.plugin-remove_button .item {
+    @apply rounded-md;
+  }
+  &.multi .ts-control > div {
+    @apply p-0 m-0 pl-1;
+  }
+
+  &.plugin-remove_button .item .remove {
     @apply border-none text-lg leading-none py-1 rounded-r-lg;
   }
 
-  .ts-dropdown {
-    @apply rounded-md border border-solid border-t border-gray-300 dark:border-gray-600 shadow-xl;
-  }
-
-  .ts-dropdown [data-selectable].option:first-child {
-    @apply rounded-t;
-  }
-
-  .ts-dropdown [data-selectable].option:last-child {
-    @apply rounded-b;
-  }
-
-  .ts-dropdown .create:hover,
-  .ts-dropdown .option:hover,
-  .ts-dropdown .active {
-    @apply bg-primary text-primary-content;
-  }
-
-  .ts-wrapper .option .title {
+  & .option .title {
     display: block;
   }
 
-  .ts-wrapper .option .url {
+  & .option .url {
     @apply block text-base-content text-sm;
   }
 
-  .ts-dropdown-content {
-    @apply bg-base-200 text-base-content rounded-[5px];
+  &.single .ts-control {
+    @apply bg-base-100!;
+  }
+}
+
+.plugin-remove_button {
+  &.ts-wrapper .item {
+    @apply rounded-md;
   }
 
-  .ts-wrapper.single .ts-control,
-  .ts-dropdown.single {
-    @apply bg-base-100 !important;
+  &.ts-wrapper .item .remove {
+    @apply border-none text-lg leading-none py-1 rounded-r-lg;
+  }
+}
+
+.item {
+  .ts-wrapper.plugin-remove_button & {
+    @apply rounded-md;
   }
 
-  .ts-control .item {
+  .ts-wrapper.plugin-remove_button & .remove {
+    @apply border-none text-lg leading-none py-1 rounded-r-lg;
+  }
+
+  .ts-control & {
     @apply text-base-content;
   }
+}
 
-  .rounded-start-inherit {
-    border-start-start-radius: inherit;
-    border-start-end-radius: inherit;
-    border-end-start-radius: unset;
-    border-end-end-radius: unset;
+.multi {
+  &.ts-wrapper .ts-control > div {
+    @apply p-0 m-0 pl-1;
+  }
+}
+
+.remove {
+  .ts-wrapper.plugin-remove_button .item & {
+    @apply border-none text-lg leading-none py-1 rounded-r-lg;
+  }
+}
+
+.ts-dropdown {
+  @apply rounded-md border border-solid border-t border-gray-300 dark:border-gray-600 shadow-xl;
+
+  & [data-selectable].option:first-child {
+    @apply rounded-t-sm;
+  }
+
+  & [data-selectable].option:last-child {
+    @apply rounded-b-sm;
+  }
+
+  & .create:hover {
+    @apply bg-primary text-primary-content;
+  }
+
+  & .option:hover {
+    @apply bg-primary text-primary-content;
+  }
+
+  & .active {
+    @apply bg-primary text-primary-content;
+  }
+
+  &.single {
+    @apply bg-base-100!;
+  }
+}
+
+.option {
+  .ts-dropdown &[data-selectable]:first-child {
+    @apply rounded-t-sm;
+  }
+
+  .ts-dropdown &[data-selectable]:last-child {
+    @apply rounded-b-sm;
+  }
+
+  .ts-dropdown &:hover {
+    @apply bg-primary text-primary-content;
+  }
+
+  .ts-wrapper & .title {
+    display: block;
+  }
+
+  .ts-wrapper & .url {
+    @apply block text-base-content text-sm;
+  }
+}
+
+.create {
+  .ts-dropdown &:hover {
+    @apply bg-primary text-primary-content;
+  }
+}
+
+.active {
+  .ts-dropdown & {
+    @apply bg-primary text-primary-content;
+  }
+}
+
+.title {
+  .ts-wrapper .option & {
+    display: block;
+  }
+}
+
+.url {
+  .ts-wrapper .option & {
+    @apply block text-base-content text-sm;
+  }
+}
+
+.single {
+  &.ts-wrapper .ts-control {
+    @apply bg-base-100!;
+  }
+
+  & .ts-dropdown {
+    @apply bg-base-100!;
+  }
+}
+/* End Tom-Select */
+
+@utility rounded-start-inherit {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+  border-end-start-radius: unset;
+  border-end-end-radius: unset;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  :root {
+    @apply bg-base-200 dark:bg-base-300 min-h-lvh;
   }
 }

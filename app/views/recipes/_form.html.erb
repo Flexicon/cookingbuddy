@@ -5,23 +5,22 @@
   <div class="space-y-4 mb-6">
     <%= render FormErrorsComponent.new(model: recipe) %>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Name</span>
-      </div>
+    <fieldset class="fieldset">
+      <%= form.label :name, "Name", class: "label" %>
+
       <%= form.text_field(
         :name,
-        class: "input input-bordered w-full",
-        placeholder: "Tomato Soup",
+        class: "input",
+        placeholder: "Tomato Soupt",
         autofocus: true,
       ) %>
-    </label>
+    </fieldset>
 
     <%= form.hidden_field :category, value: recipe.category %>
   </div>
 
   <div class="modal-action">
-    <%= form.submit is_editing ? "Update" : "Add Recipe", class: "btn btn-primary" %>
+    <%= form.submit class: "btn btn-primary" %>
     <button class="btn" data-action="click->modals#close">Never mind</button>
   </div>
 <% end %>

@@ -4,41 +4,34 @@
   <div class="space-y-4 mb-6">
     <%= render FormErrorsComponent.new(model: @product) %>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Name</span>
-      </div>
-      <%= form.text_field :name,
-                      class: "input input-bordered w-full",
-                      placeholder: "Tomato",
-                      autofocus: true %>
-    </label>
+    <fieldset class="fieldset">
+      <%= form.label :name, "Name", class: "label" %>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Category</span>
-      </div>
+      <%= form.text_field :name, class: "input", placeholder: "Tomato", autofocus: true %>
+    </fieldset>
 
-      <%= form.select :category,
-                  options_for_select(
-                    Product.categories.keys.map do |category|
-                      [category.humanize, category]
-                    end,
-                    @product.category,
-                  ),
-                  { prompt: "Pick a Category" },
-                  { class: "select select-bordered w-full" } %>
-    </label>
+    <fieldset class="fieldset">
+      <%= form.label :category, "Category", class: "label" %>
+
+      <%= form.select(
+        :category,
+        options_for_select(
+          Product.categories.keys.map { |category| [category.humanize, category] },
+          @product.category,
+        ),
+        { prompt: "Pick a Category" },
+        { class: "select" },
+      ) %>
+    </fieldset>
   </div>
 
   <div class="space-x-2">
-    <%= form.submit @product.persisted? ? "Update" : "Add Product",
-                class: "btn btn-primary" %>
+    <%= form.submit(class: "btn btn-primary") %>
 
     <% if @product.persisted? %>
-      <%= link_to "Cancel", @product, class: "btn btn-ghost" %>
+      <%= link_to "Never mind", @product, class: "btn btn-ghost" %>
     <% else %>
-      <%= link_to "Cancel",
+      <%= link_to "Never mind",
       products_path,
       class: "btn btn-ghost",
       data: {
