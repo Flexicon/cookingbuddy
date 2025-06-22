@@ -1,4 +1,8 @@
 en:
+  helpers:
+    submit:
+      recipe:
+        create: "Add Recipe"
   recipes:
     create:
       success: "Added recipe for %{name}"
