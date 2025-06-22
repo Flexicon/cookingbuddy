@@ -1,11 +1,11 @@
 <%= form_with model: [@recipe, @ingredient], class: "w-full" do |form| %>
-  <div class="space-y-4 mb-6">
+  <div class="space-y-2">
     <%= render FormErrorsComponent.new(model: @ingredient) %>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Product</span>
-      </div>
+    <fieldset class="fieldset">
+      <label class="label" for="product_id">
+        <span>Product</span>
+      </label>
 
       <%= form.collection_select(
         :product_id,
@@ -15,19 +15,20 @@
         { include_blank: "Pick a Product" },
         { data: { controller: "select" } },
       ) %>
-    </label>
+    </fieldset>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Amount</span>
-      </div>
+    <fieldset class="fieldset">
+      <label class="label" for="amount">
+        <span>Amount</span>
+      </label>
+
       <%= form.number_field(:amount, class: "input", placeholder: "10", min: 1) %>
-    </label>
+    </fieldset>
 
-    <label class="form-control">
-      <div class="label">
-        <span class="label-text">Unit</span>
-      </div>
+    <fieldset class="fieldset">
+      <label class="label" for="unit">
+        <span>Unit</span>
+      </label>
 
       <%= form.select(
         :unit,
@@ -35,7 +36,7 @@
         { include_blank: "Pick a unit" },
         { data: { controller: "select" } },
       ) %>
-    </label>
+    </fieldset>
   </div>
 
   <div class="modal-action">
