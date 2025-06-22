@@ -14,17 +14,23 @@
           <%= render FormErrorsComponent.new(model: @recipe) %>
         </div>
 
-        <label class="form-control" for="recipe_image">
+        <fieldset class="fieldset">
+          <label class="label sr-only" for="image">
+            <span>Image</span>
+          </label>
+
           <%= form.file_field(
             :image,
             class: "file-input w-full",
             accept: "image/*",
             required: true,
           ) %>
+
+          <%# TODO: add JS controller to update the below image with a file input preview %>
           <% if @recipe.image.attached? %>
             <%= image_tag @recipe.image, class: "mt-2 max-w-[200px] rounded-md" %>
           <% end %>
-        </label>
+        </fieldset>
 
         <div class="modal-action">
           <%= form.submit "Save", class: "btn btn-primary" %>
