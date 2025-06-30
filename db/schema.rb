@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_14_172948) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_30_082401) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -72,14 +72,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_14_172948) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.integer "category", null: false
-    t.integer "protein_id"
-    t.integer "carbohydrate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["carbohydrate_id"], name: "index_recipes_on_carbohydrate_id"
     t.index ["category"], name: "index_recipes_on_category"
     t.index ["name"], name: "index_recipes_on_name", unique: true
-    t.index ["protein_id"], name: "index_recipes_on_protein_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +100,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_14_172948) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredients", "products"
   add_foreign_key "ingredients", "recipes"
-  add_foreign_key "recipes", "products", column: "carbohydrate_id"
-  add_foreign_key "recipes", "products", column: "protein_id"
 end

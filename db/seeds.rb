@@ -22,12 +22,12 @@ flour = Product.create!(name: "Flour", category: :carbohydrate)
 onion = Product.create!(name: "Onion", category: :general)
 
 # Setup Recipes
-carrot_cake = Recipe.create!(name: "Carrot Cake", category: :dessert, carbohydrate: flour)
-cinnamon_roll = Recipe.create!(name: "Cinnamon Roll", category: :lunch, carbohydrate: flour)
-matar_tofu = Recipe.create!(name: "Matar Tofu", category: :lunch, protein: tofu)
-tortilla_pizza = Recipe.create!(name: "tortilla_pizza", category: :lunch, protein: tofu)
-tofu_scramble = Recipe.create!(name: "Tofu Scramble", category: :dinner, protein: tofu)
-potato_salad = Recipe.create!(name: "Potato Salad", category: :supper, carbohydrate: potato)
+carrot_cake = Recipe.create!(name: "Carrot Cake", category: :dessert)
+cinnamon_roll = Recipe.create!(name: "Cinnamon Roll", category: :lunch)
+matar_tofu = Recipe.create!(name: "Matar Tofu", category: :lunch)
+tortilla_pizza = Recipe.create!(name: "tortilla_pizza", category: :lunch)
+tofu_scramble = Recipe.create!(name: "Tofu Scramble", category: :dinner)
+potato_salad = Recipe.create!(name: "Potato Salad", category: :supper)
 
 # Setup Ingredients
 Ingredient.create!(amount: 65, unit: "g", recipe: carrot_cake, product: carrot)
