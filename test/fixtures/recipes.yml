@@ -3,11 +3,7 @@
 one:
   name: Carbonara
   category: :dinner
-  protein: protein
-  carbohydrate: carbohydrate
 
 two:
   name: Matar
   category: :lunch
-  protein: protein
-  carbohydrate: carbohydrate
