@@ -486,6 +486,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rubocop
   rubocop-discourse
   rubocop-rails
   selenium-webdriver

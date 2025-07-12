@@ -47,6 +47,7 @@ group :development, :test do
 
   # Anti-bikeshedding style linter [https://github.com/standardrb/standard]
   gem "standard", ">= 1.35.1"
+  gem "rubocop"
   gem "rubocop-rails"
   gem "rubocop-discourse"
 
