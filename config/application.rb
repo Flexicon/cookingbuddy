@@ -25,6 +25,7 @@ module CookingBuddy
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths << Rails.root.join("app/forms")
 
     # Override the default form builder
     config.action_view.default_form_builder = "CustomFormBuilder"

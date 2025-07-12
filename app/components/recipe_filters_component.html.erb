@@ -1,0 +1,51 @@
+<div>
+  <%= form_with(
+    model: @filter,
+    url: recipes_path,
+    method: :get,
+    scope: :filter,
+    class: "flex gap-2",
+  ) do |form| %>
+    <div
+      class="
+        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 flex-1
+      "
+    >
+      <%= form.text_field(
+        :search,
+        placeholder: "Recipe name",
+        class: "input input-xs w-full",
+      ) %>
+
+      <%= form.select(
+        :category,
+        @categories,
+        { prompt: "Pick a Category" },
+        { class: "select select-xs w-full" },
+      ) %>
+
+      <%= form.select(
+        :protein_id,
+        options_from_collection_for_select(@proteins, :id, :name),
+        { prompt: "Pick a Protein" },
+        { class: "select select-xs w-full" },
+      ) %>
+
+      <%= form.select(
+        :carbohydrate_id,
+        options_from_collection_for_select(@carbohydrates, :id, :name),
+        { prompt: "Pick a Carbohydrate" },
+        { class: "select select-xs w-full" },
+      ) %>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <button type="submit" class="btn btn-square btn-outline btn-secondary btn-xs">
+        <%= lucide_icon("search", class: "h-4 w-4") %>
+      </button>
+      <%= link_to(recipes_path, class: ["btn btn-square btn-ghost btn-xs", ("hidden" if @filter.filled?)]) do %>
+        <%= lucide_icon("circle-x", class: "h-4 w-4") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -9,7 +9,8 @@ class RecipesController < ApplicationController
   ]
 
   def index
-    @recipes = Recipe.includes(:image_attachment).all
+    @filter = RecipeFilterForm.new(filter_params)
+    @recipes = @filter.results.includes(:image_attachment)
   end
 
   def show
@@ -154,5 +155,9 @@ class RecipesController < ApplicationController
 
   def image_params
     params.expect(recipe: [:image])
+  end
+
+  def filter_params
+    params.fetch(:filter, {}).permit(:search, :category, :protein_id, :carbohydrate_id)
   end
 end
