@@ -27,9 +27,12 @@ class RecipeFilterForm
   end
 
   def filter_by_product_ids(scope)
-    product_ids = [protein_id, carbohydrate_id].compact
-    return scope if product_ids.empty?
-    scope.joins(:ingredients).where(ingredients: {product_id: product_ids}).distinct
+    return scope if protein_id.blank? && carbohydrate_id.blank?
+
+    scope = scope.joins(:ingredients)
+    scope = scope.where(ingredients: {product_id: protein_id}) if protein_id.present?
+    scope = scope.where(ingredients: {product_id: carbohydrate_id}) if carbohydrate_id.present?
+    scope.distinct
   end
 
   def filter_by_search(scope)
