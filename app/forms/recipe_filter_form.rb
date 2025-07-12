@@ -10,13 +10,29 @@ class RecipeFilterForm
   attribute :search, :string
 
   def results
-    scope = Recipe.all
-    scope = scope.where(category:) if category.present?
-    scope = scope.where("name LIKE ?", "%#{search}%") if search.present?
-    scope
+    Recipe.all
+      .then(&method(:filter_by_category))
+      .then(&method(:filter_by_product_ids))
+      .then(&method(:filter_by_search))
   end
 
   def filled?
-    category.present? || protein_id.present? || carbohydrate_id.present? || search.present?
+    [category, protein_id, carbohydrate_id, search].any?(&:present?)
+  end
+
+  private
+
+  def filter_by_category(scope)
+    category.present? ? scope.where(category: category) : scope
+  end
+
+  def filter_by_product_ids(scope)
+    product_ids = [protein_id, carbohydrate_id].compact
+    return scope if product_ids.empty?
+    scope.joins(:ingredients).where(ingredients: {product_id: product_ids}).distinct
+  end
+
+  def filter_by_search(scope)
+    search.present? ? scope.where("name LIKE ?", "%#{search}%") : scope
   end
 end

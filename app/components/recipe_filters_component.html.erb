@@ -43,7 +43,7 @@
       <button type="submit" class="btn btn-square btn-outline btn-secondary btn-xs">
         <%= lucide_icon("search", class: "h-4 w-4") %>
       </button>
-      <%= link_to(recipes_path, class: ["btn btn-square btn-ghost btn-xs", ("hidden" if @filter.filled?)]) do %>
+      <%= link_to(recipes_path, class: ["btn btn-square btn-ghost btn-xs", ("hidden" unless @filter.filled?)]) do %>
         <%= lucide_icon("circle-x", class: "h-4 w-4") %>
       <% end %>
     </div>
