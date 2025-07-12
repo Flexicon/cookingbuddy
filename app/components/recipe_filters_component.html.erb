@@ -26,14 +26,14 @@
 
       <%= form.select(
         :protein_id,
-        options_from_collection_for_select(@proteins, :id, :name),
+        @proteins.map { |p| [p.name, p.id] },
         { prompt: "Pick a Protein" },
         { class: "select select-xs w-full" },
       ) %>
 
       <%= form.select(
         :carbohydrate_id,
-        options_from_collection_for_select(@carbohydrates, :id, :name),
+        @carbohydrates.map { |c| [c.name, c.id] },
         { prompt: "Pick a Carbohydrate" },
         { class: "select select-xs w-full" },
       ) %>
