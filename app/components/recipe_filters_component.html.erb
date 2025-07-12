@@ -26,14 +26,14 @@
 
       <%= form.select(
         :protein_id,
-        @proteins.map { |p| [p.name, p.id] },
+        @proteins,
         { prompt: "Pick a Protein" },
         { class: "select select-xs w-full" },
       ) %>
 
       <%= form.select(
         :carbohydrate_id,
-        @carbohydrates.map { |c| [c.name, c.id] },
+        @carbohydrates,
         { prompt: "Pick a Carbohydrate" },
         { class: "select select-xs w-full" },
       ) %>
@@ -45,6 +45,7 @@
       </button>
       <%= link_to(recipes_path, class: ["btn btn-square btn-ghost btn-xs", ("hidden" unless @filter.filled?)]) do %>
         <%= lucide_icon("circle-x", class: "h-4 w-4") %>
+        <%= @filter.filters_count %>
       <% end %>
     </div>
   <% end %>

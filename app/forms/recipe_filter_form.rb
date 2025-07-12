@@ -17,7 +17,11 @@ class RecipeFilterForm
   end
 
   def filled?
-    [category, protein_id, carbohydrate_id, search].any?(&:present?)
+    attributes.values.any?(&:present?)
+  end
+
+  def filters_count
+    attributes.values.count(&:present?)
   end
 
   private
