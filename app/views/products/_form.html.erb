@@ -15,10 +15,7 @@
 
       <%= form.select(
         :category,
-        options_for_select(
-          Product.categories.keys.map { |category| [category.humanize, category] },
-          @product.category,
-        ),
+        Product.categories.keys.map { |c| [c.humanize, c] },
         { prompt: "Pick a Category" },
         { class: "select" },
       ) %>
