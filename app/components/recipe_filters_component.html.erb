@@ -35,7 +35,7 @@
           <%= form.select(
             :category,
             @categories,
-            { prompt: "Pick a Category" },
+            { include_blank: "Pick a Category" },
             { class: "select select-sm w-full" },
           ) %>
         </div>
@@ -45,7 +45,7 @@
           <%= form.select(
             :protein_id,
             @proteins,
-            { prompt: "Pick a Protein" },
+            { include_blank: "Pick a Protein" },
             { class: "select select-sm w-full" },
           ) %>
         </div>
@@ -55,7 +55,7 @@
           <%= form.select(
             :carbohydrate_id,
             @carbohydrates,
-            { prompt: "Pick a Carbohydrate" },
+            { include_blank: "Pick a Carbohydrate" },
             { class: "select select-sm w-full" },
           ) %>
         </div>
