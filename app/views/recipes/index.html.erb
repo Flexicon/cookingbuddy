@@ -1,25 +1,28 @@
 <div class="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_300px] gap-4">
   <!-- Recipes List -->
-  <div class="card bg-base-100 shadow-xl">
+  <%= turbo_frame_tag(:recipes, class: "card bg-base-100 shadow-xl") do %>
     <div class="card-body gap-4">
       <h2 class="card-title flex justify-between">
         <span>Recipes</span>
-        <%= link_to(
-          new_recipe_path,
-          class: "btn btn-primary btn-outline btn-sm",
-          data: { turbo_frame: "modal" },
-        ) do %>
-          <%= lucide_icon("circle-plus", class: "h-4 w-4") %>
-          Add
-        <% end %>
+
+        <div class="flex gap-2">
+          <%= render RecipeFiltersComponent.new(filter: @filter) %>
+          <%= link_to(
+              new_recipe_path,
+              class: "btn btn-primary btn-outline btn-sm",
+              data: { turbo_frame: "modal" },
+            ) do %>
+            <%= lucide_icon("circle-plus", class: "h-4 w-4") %>
+            Add
+          <% end %>
+        </div>
       </h2>
 
-      <%= turbo_frame_tag(:recipes, class: "space-y-4") do %>
-        <%= render RecipeFiltersComponent.new(filter: @filter) %>
+      <div class="space-y-4">
         <%= render RecipeListComponent.new(recipes: @recipes) %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <!-- Suggested Recipes -->
   <div class="card bg-base-100 shadow-xl">
     <div
