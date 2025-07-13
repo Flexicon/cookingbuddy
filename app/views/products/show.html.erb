@@ -12,7 +12,7 @@
 
       <h2 class="card-title mb-4">
         <span><%= @product.name %></span>
-        <%= link_to edit_product_path(@product), class: "btn btn-ghost btn-xs", title: "Edit" do %>
+        <%= link_to edit_product_path(@product), class: "btn btn-ghost btn-xs", title: "Edit", data: { turbo_action: "advance" } do %>
           <%= lucide_icon("pencil", class: "h-4 w-4") %>
         <% end %>
         <%= button_to @product,
