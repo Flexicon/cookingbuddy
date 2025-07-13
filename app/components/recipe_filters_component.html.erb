@@ -19,6 +19,7 @@
       method: :get,
       scope: :filter,
       class: "space-y-4",
+      data: { turbo_action: "advance" },
     ) do |form| %>
       <div class="space-y-3">
         <div>
@@ -67,7 +68,7 @@
           Apply Filters
         </button>
         <% if @filter.filled? %>
-          <%= link_to(recipes_path, class: "btn btn-ghost btn-sm") do %>
+          <%= link_to(recipes_path, class: "btn btn-ghost btn-sm", data: { turbo_action: "advance" }) do %>
             <%= lucide_icon("circle-x", class: "h-4 w-4") %>
             Clear
           <% end %>
