@@ -77,7 +77,7 @@ gem "omniauth"
 gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
 
-gem "view_component", "~> 3.23"
+gem "view_component", "~> 4.0"
 
 # Use Active Storage with Minio (s3 compatible) for file uploads [https://guides.rubyonrails.org/active_storage_overview.html]
 gem "aws-sdk-s3"
