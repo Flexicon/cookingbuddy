@@ -43,7 +43,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "brakeman", "~> 7.1.0", require: false
 
   # Ruby code analyzer and formatter [https://github.com/rubocop/rubocop]
   gem "rubocop", "~> 1.79.1", require: false
