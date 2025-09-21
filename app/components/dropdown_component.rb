@@ -7,9 +7,9 @@ class DropdownComponent < ViewComponent::Base
   DEFAULT_MENU_CLASS = [
     "menu bg-base-100 dark:bg-base-200 border border-white/5 shadow-2xl outline outline-1 outline-black/5",
     "rounded-box z-1 min-w-52 max-w-64 p-2 shadow-lg"
-  ]
+  ].freeze
 
-  POSITIONS = %i[top bottom left right]
+  POSITIONS = %i[top bottom left right].freeze
 
   def initialize(
     container_class: nil,
@@ -19,13 +19,13 @@ class DropdownComponent < ViewComponent::Base
     position: :bottom
   )
     if POSITIONS.exclude?(position.to_sym)
-      raise ArgumentError, "Invalid position: #{position}. Valid positions are: #{POSITIONS.join(", ")}"
+      raise ArgumentError, "Invalid position: #{position}. Valid positions are: #{POSITIONS.join(', ')}"
     end
 
     @container_class = [
       container_class,
       "dropdown",
-      ("dropdown-" + position.to_s),
+      "dropdown-#{position}",
       ("dropdown-hover" if hover),
       ("dropdown-end" if align_end)
     ].flatten.compact.uniq
@@ -38,7 +38,7 @@ class DropdownComponent < ViewComponent::Base
     end
 
     def call
-      content_tag :div, content, {class: @class, tabindex: "0", role: "button"}
+      content_tag :div, content, { class: @class, tabindex: "0", role: "button" }
     end
   end
 
@@ -48,7 +48,7 @@ class DropdownComponent < ViewComponent::Base
     end
 
     def call
-      content_tag :li, content, {class: @class}
+      content_tag :li, content, { class: @class }
     end
   end
 end

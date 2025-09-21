@@ -5,7 +5,7 @@ class ProductCategoryComponent < ViewComponent::Base
     general: "badge-info",
     protein: "badge-secondary",
     carbohydrate: "badge-accent"
-  }
+  }.freeze
 
   def initialize(category:)
     @category = category

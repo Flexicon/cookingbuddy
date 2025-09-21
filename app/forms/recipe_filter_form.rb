@@ -11,9 +11,9 @@ class RecipeFilterForm
 
   def results
     Recipe.all
-      .then(&method(:filter_by_category))
-      .then(&method(:filter_by_product_ids))
-      .then(&method(:filter_by_search))
+          .then { |scope| filter_by_category(scope) }
+          .then { |scope| filter_by_product_ids(scope) }
+          .then { |scope| filter_by_search(scope) }
   end
 
   def filled?
@@ -37,7 +37,7 @@ class RecipeFilterForm
 
     scope
       .joins(:ingredients)
-      .where(ingredients: {product_id: product_ids})
+      .where(ingredients: { product_id: product_ids })
       .group("recipes.id")
       .having("COUNT(DISTINCT ingredients.product_id) = ?", product_ids.size)
   end

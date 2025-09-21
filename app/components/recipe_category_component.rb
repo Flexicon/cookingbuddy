@@ -7,25 +7,19 @@ class RecipeCategoryComponent < ViewComponent::Base
     dinner: "badge-success",
     dessert: "badge-info",
     supper: "badge-warning"
-  }
+  }.freeze
 
   def initialize(recipe: nil, category: nil, is_editable: true)
-    if recipe.nil? && category.nil?
-      raise ArgumentError, "Either recipe or category must be provided"
-    end
+    raise ArgumentError, "Either recipe or category must be provided" if recipe.nil? && category.nil?
 
-    if recipe && category
-      raise ArgumentError, "Only one of recipe or category should be provided"
-    end
+    raise ArgumentError, "Only one of recipe or category should be provided" if recipe && category
 
     @recipe = recipe
     @category = @recipe&.category || category
     @variant = VARIANT[@category.to_sym]
     @is_editable = is_editable && @recipe.present?
 
-    @categories = if @recipe
-      Recipe.categories.keys.map { |category| [category.humanize, category] }
-    end
+    @categories = (Recipe.categories.keys.map { |category| [category.humanize, category] } if @recipe)
   end
 
   def editable?

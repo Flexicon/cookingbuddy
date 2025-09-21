@@ -7,7 +7,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   # This is useful for `_id` fields (e.g. `product_id`) where validation is defined on the
   # association itself (e.g. `validates :product, presence: true`), ensuring the select
   # field is styled appropriately when errors exist on the association.
-  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+  def collection_select(method, collection, value_method, text_method, options = {}, html_options = {}) # rubocop:disable Metrics/ParameterLists
     if method.to_s.end_with?("_id")
       association = method.to_s.sub(/_id$/, "").to_sym
       has_error = @object.errors[method].any? || @object.errors[association].any?
