@@ -71,3 +71,7 @@ Metrics/PerceivedComplexity:
 Layout/LineLength:
   Exclude:
     - "config/initializers/**/*.rb"
+
+Naming/PredicateMethod:
+  Exclude:
+    - "test/**/*.rb"

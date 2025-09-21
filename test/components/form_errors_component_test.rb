@@ -3,7 +3,7 @@
 require "test_helper"
 
 class FormErrorsComponentTest < ViewComponent::TestCase
-  def setup # rubocop:disable Naming/PredicateMethod
+  def setup
     @model = Recipe.new
     @model.valid?
 
