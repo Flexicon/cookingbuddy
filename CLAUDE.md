@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Testing & Quality
 - **Run tests**: `bin/rails test` - Basic test suite
 - **Run all tests**: `bin/rails test:all` - Includes integration/system tests
-- **Lint (Ruby)**: `bin/rubocop` or `bin/rubocop -f github` - Code quality checks with Standard gem
+- **Lint (Ruby)**: `bin/rubocop` or `bin/rubocop -f github` - Code quality checks with RuboCop
 - **Security scan**: `bin/brakeman` - Static security analysis
 
 ### Asset Building
@@ -59,7 +59,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Code Conventions
 
-- **Standard Ruby**: Uses Standard gem for consistent Ruby formatting
+- **RuboCop**: Uses RuboCop for Ruby code analysis and formatting
 - **Frozen String Literals**: All Ruby files use `# frozen_string_literal: true`
 - **Strong Parameters**: Rails 8 `params.expect()` syntax throughout
 - **Component Naming**: ViewComponents follow `*_component.rb` pattern with matching templates

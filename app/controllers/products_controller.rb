@@ -8,15 +8,13 @@ class ProductsController < ApplicationController
     @products = Product.order(name: :asc).all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product = Product.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @product = Product.new(product_params)
@@ -48,6 +46,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.expect(product: [:name, :category])
+    params.expect(product: %i[name category])
   end
 end

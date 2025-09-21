@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :trackable,
-    :omniauthable, omniauth_providers: [:github]
+         :omniauthable, omniauth_providers: [:github]
 
   def self.from_omniauth(auth)
     return nil unless allowed_emails.include?(auth.info.email)

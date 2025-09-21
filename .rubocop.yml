@@ -1,23 +1,11 @@
-inherit_mode:
-  merge:
-    - Exclude
-
-require:
-  - standard
+# RuboCop configuration
+# Based on Rails defaults with custom adjustments
 
 plugins:
-  - standard-custom
-  - standard-performance
-  - rubocop-performance
   - rubocop-rails
+  - rubocop-performance
   - rubocop-capybara
   - rubocop-factory_bot
-  - rubocop-rspec
-
-inherit_gem:
-  standard: config/base.yml
-  standard-performance: config/base.yml
-  standard-custom: config/base.yml
 
 AllCops:
   NewCops: enable
@@ -27,6 +15,59 @@ AllCops:
     - "db/schema.rb"
     - "vendor/**/*"
     - "vendor/bundle/**/*"
+    - "node_modules/**/*"
+    - "tmp/**/*"
 
-Style/FrozenStringLiteralComment:
+# Layout & Style
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+# Rails specific
+Rails:
   Enabled: true
+
+# Performance
+Performance:
+  Enabled: true
+
+# Testing
+Capybara:
+  Enabled: true
+
+FactoryBot:
+  Enabled: true
+
+# Disable some cops for specific contexts
+Lint/MissingSuper:
+  Exclude:
+    - "app/components/**/*_component.rb"
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - "db/migrate/**/*.rb"
+    - "test/**/*.rb"
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - "db/migrate/**/*.rb"
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/PerceivedComplexity:
+  Max: 12
+
+Layout/LineLength:
+  Exclude:
+    - "config/initializers/**/*.rb"

@@ -2,10 +2,10 @@
 
 class RecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recipe, only: [
-    :show, :edit, :edit_instructions, :edit_name, :edit_image,
-    :update, :update_category, :update_instructions, :update_name, :update_image,
-    :destroy, :remove_image
+  before_action :set_recipe, only: %i[
+    show edit edit_instructions edit_name edit_image
+    update update_category update_instructions update_name update_image
+    destroy remove_image
   ]
 
   def index
@@ -13,24 +13,19 @@ class RecipesController < ApplicationController
     @recipes = @filter.results.includes(:image_attachment)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @recipe = Recipe.new(category: :lunch)
   end
 
-  def edit
-  end
+  def edit; end
 
-  def edit_name
-  end
+  def edit_name; end
 
-  def edit_instructions
-  end
+  def edit_instructions; end
 
-  def edit_image
-  end
+  def edit_image; end
 
   def create
     @recipe = Recipe.new(recipe_params)
@@ -127,7 +122,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_url }
-      format.turbo_stream {}
+      format.turbo_stream
     end
   end
 
@@ -138,7 +133,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.expect(recipe: [:name, :category, :image, :instructions])
+    params.expect(recipe: %i[name category image instructions])
   end
 
   def name_params
@@ -150,7 +145,7 @@ class RecipesController < ApplicationController
   end
 
   def category_params
-    {category: params.expect(:category)}
+    { category: params.expect(:category) }
   end
 
   def image_params

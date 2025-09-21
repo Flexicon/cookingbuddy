@@ -10,7 +10,7 @@ class Recipe < ApplicationRecord
 
   has_rich_text :instructions
 
-  enum :category, {breakfast: 0, lunch: 1, dinner: 2, supper: 3, dessert: 4}
+  enum :category, { breakfast: 0, lunch: 1, dinner: 2, supper: 3, dessert: 4 }
 
   validates :name, :category, presence: true
   validates :name, uniqueness: true

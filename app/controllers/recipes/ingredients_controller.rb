@@ -11,8 +11,7 @@ module Recipes
       @ingredient = @recipe.ingredients.build
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @ingredient = @recipe.ingredients.build(ingredient_params)
@@ -61,7 +60,7 @@ module Recipes
     end
 
     def ingredient_params
-      params.expect(ingredient: [:product_id, :amount, :unit])
+      params.expect(ingredient: %i[product_id amount unit])
     end
   end
 end

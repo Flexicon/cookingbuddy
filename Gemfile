@@ -45,11 +45,12 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
-  # Anti-bikeshedding style linter [https://github.com/standardrb/standard]
-  gem "standard", ">= 1.35.1"
-  gem "rubocop"
-  gem "rubocop-rails"
-  gem "rubocop-discourse"
+  # Ruby code analyzer and formatter [https://github.com/rubocop/rubocop]
+  gem "rubocop", "~> 1.79.1", require: false
+  gem "rubocop-capybara", require: false
+  gem "rubocop-factory_bot", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
 
   # Better fixtures and factories
   gem "factory_bot_rails"
