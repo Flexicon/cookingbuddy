@@ -46,7 +46,7 @@ group :development, :test do
   gem "brakeman", "~> 7.1.0", require: false
 
   # Ruby code analyzer and formatter [https://github.com/rubocop/rubocop]
-  gem "rubocop", "~> 1.81.0", require: false
+  gem "rubocop", "~> 1.81.1", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-factory_bot", require: false
   gem "rubocop-performance", require: false
